@@ -11,13 +11,15 @@
 ==> open cmd in the project folder
 
 run :
-#### python manage.py makemigrations <app-name>
+#### python manage.py makemigrations appCar
 #### python manage.py migrate
 
 // Generate dummy data for the database
+// do not use yet ... Not set up
 #### pip install faker 
 #### python manage.py generate_dummy_data
 
+//serve the pages
 #### python manage.py runserver 9000  // or any other available port
 			
 
