@@ -29,29 +29,35 @@
 		</a>
 		<ul class="side-menu top">
 			<li >
-				<a href="{% url 'admin_dashboard' %}">
+				<a href="{% url 'dashboard_manager' %}">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li class="active">
-				 <a href="{% url 'our_managers' %}">
+				 <a href="{% url 'our_clients' %}">
 
 					<i class='bx bxs-group' ></i>
-					<span class="text">Managers</span>
+					<span class="text">Clients</span>
 				</a>
 			</li>
 			<li>
-				<a href="{% url 'our_admins' %}">
+				<a href="{% url 'our_cars' %}">
 				<i class='bx bxs-group' ></i>
-					<span class="text">Admins</span>
+					<span class="text">Voitures</span>
 				</a>
 			</li>
-			<li>
-				<a href="{% url 'ajouter_manager' %}">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Ajouter un manager</span></a>
-				
+            <li>
+				<a href="{% url 'our_reservations' %}">
+				<i class='bx bxs-group' ></i>
+					<span class="text">Reservation</span>
+				</a>
+			</li>
+            <li>
+				<a href="">
+				<i class='bx bxs-group' ></i>
+					<span class="text">Ajouter un client</span>
+				</a>
 			</li>
 
 		</ul>
@@ -100,7 +106,7 @@
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="{% url 'dashboard_manager' %}">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -132,27 +138,27 @@
                                     <tr>
                                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Nom Complet <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Nom d'utilisateur <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Téléphone<span class="icon-arrow">&UpArrow;</span></th>
                                         <th> email <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for manager in managers %}
+                                    {% for client in clients %}
                         <tr>
-                            <td>{{ manager.id }}</td>
-                            <td>{{ manager.name }}</td>
-                            <td>{{ manager.username }}</td>
-                            <td>{{ manager.email }}</td>
+                            <td>{{ client.id }}</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.phone }}</td>
+                            <td>{{ client.email }}</td>
                             <td>
-                                <a href="{% url 'modifier_manager' manager.id %}" class="btn btn-primary">Modifier</a>
+                                <a href="" class="btn btn-primary">Modifier</a>
                             </td>
                             <td>
-                                <form action="{% url 'supprimer_manager' manager.id %}" method="post" id="form-supprimer">
+                                <form action="" method="post" id="form-supprimer">
                                     {% csrf_token %}
                                     <!-- Vos autres champs de formulaire ici -->
-                                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce manager ?');">Supprimer</button>
+                                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?');">Supprimer</button>
                                 </form>
                             </td>
                 </td>
