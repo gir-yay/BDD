@@ -9,6 +9,7 @@
 ==> create DB called locationv_db
 ==> open cmd in the project folder
 
+#### go to the ./appCar/migration folder and delete everything inside migration 
 run :
 #### python manage.py makemigrations appCar
 #### python manage.py migrate
