@@ -6,16 +6,16 @@
 #### python -m pip install pymongo==3.12.3
 
 ==> local mongoDB
-==> create DB called <db-name>
-
+==> create DB called locationv_db
 ==> open cmd in the project folder
 
+#### go to the ./appCar/migration folder and delete everything inside migration 
+#### open terminal in the project folder
 run :
 #### python manage.py makemigrations appCar
 #### python manage.py migrate
 
 // Generate dummy data for the database
-// do not use yet ... Not set up
 #### pip install faker 
 #### python manage.py generate_dummy_data
 
