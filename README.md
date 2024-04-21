@@ -10,6 +10,7 @@
 ==> open cmd in the project folder
 
 #### go to the ./appCar/migration folder and delete everything inside migration 
+#### open terminal in the project folder
 run :
 #### python manage.py makemigrations appCar
 #### python manage.py migrate
