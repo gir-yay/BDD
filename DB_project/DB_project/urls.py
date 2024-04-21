@@ -1,0 +1,42 @@
+"""DB_project URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from appCar.views import home, ajouter_voiture,dashboard,our_managers,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+     path('', home, name='home'),
+      path('ajouter_voiture/', ajouter_voiture, name='ajouter_voiture'), 
+      
+      
+
+
+
+       path('login/', login_view, name='login_view'),
+        path('admin_dashboard/', dashboard, name='admin_dashboard'),
+        path('our-managers/', our_managers, name='our_managers'),
+         # URL pour la modification d'un gestionnaire
+    path('modifier-manager/<int:manager_id>/', modifier_manager, name='modifier_manager'),
+
+    # URL pour la suppression d'un gestionnaire
+     path('supprimer-manager/<int:manager_id>/', supprimer_manager, name='supprimer_manager'),
+    path('ajouter-manager/', ajouter_manager, name='ajouter_manager'),
+    path('dashboard_manager/', dashboard_manager, name='dashboard_manager'),
+    
+
+]
