@@ -6,8 +6,7 @@
 #### python -m pip install pymongo==3.12.3
 
 ==> local mongoDB
-==> create DB called <db-name>
-
+==> create DB called locationv_db
 ==> open cmd in the project folder
 
 run :
@@ -15,7 +14,6 @@ run :
 #### python manage.py migrate
 
 // Generate dummy data for the database
-// do not use yet ... Not set up
 #### pip install faker 
 #### python manage.py generate_dummy_data
 
