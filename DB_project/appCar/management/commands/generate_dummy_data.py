@@ -78,5 +78,8 @@ class Command(BaseCommand):
     def generate_admins(self):
         Administrator.objects.create(
             username=fake.user_name(),
+            name=fake.name(),
+            phone=fake.phone_number(),
+            email=fake.email(),
             password="12345",
         )

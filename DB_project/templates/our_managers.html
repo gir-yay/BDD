@@ -25,7 +25,7 @@
 		<a href="#" class="brand">
 
 			<i class="bx ri-open-arm-fill "></i>
-			<span class="text">KounHany !</span>
+			<span class="text">CarBook</span>
 		</a>
 		<ul class="side-menu top">
 			<li >
@@ -128,8 +128,8 @@
                                 <thead>
                                     <tr>
                                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Nom Complet <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Nom d'utilisateur <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> email <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
@@ -140,7 +140,7 @@
                         <tr>
                             <td>{{ manager.id }}</td>
                             <td>{{ manager.name }}</td>
-                            <td>{{ manager.lastname }}</td>
+                            <td>{{ manager.username }}</td>
                             <td>{{ manager.email }}</td>
                             <td>
                                 <a href="{% url 'modifier_manager' manager.id %}" class="btn btn-primary">Modifier</a>
