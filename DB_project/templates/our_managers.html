@@ -130,7 +130,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> CIN <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Nom Complet <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Nom d'utilisateur <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> email <span class="icon-arrow">&UpArrow;</span></th>
@@ -141,15 +141,15 @@
                                 <tbody>
                                     {% for manager in managers %}
                         <tr>
-                            <td>{{ manager.id }}</td>
+                            <td>{{ manager.cin }}</td>
                             <td>{{ manager.name }}</td>
                             <td>{{ manager.username }}</td>
                             <td>{{ manager.email }}</td>
                             <td>
-                                <a href="{% url 'modifier_manager' manager.id %}" class="btn btn-primary">Modifier</a>
+                                <a href="{% url 'modifier_manager' manager.cin %}" class="btn btn-primary">Modifier</a>
                             </td>
                             <td>
-                                <form action="{% url 'supprimer_manager' manager.id %}" method="post" id="form-supprimer">
+                                <form action="{% url 'supprimer_manager' manager.cin %}" method="post" id="form-supprimer">
                                     {% csrf_token %}
                                     <!-- Vos autres champs de formulaire ici -->
                                     <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce manager ?');">Supprimer</button>

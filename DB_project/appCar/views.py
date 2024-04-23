@@ -141,8 +141,8 @@ def our_reservations(request):
 #===================================================================================================================================
 #modifier un manager
 
-def modifier_manager(request, manager_id):
-    manager = get_object_or_404(Manager, pk=manager_id)
+def modifier_manager(request, manager_cin):
+    manager = get_object_or_404(Manager, pk=manager_cin)
     if request.method == 'POST':
         form = ManagerForm(request.POST, instance=manager)
         if form.is_valid():
@@ -155,8 +155,8 @@ def modifier_manager(request, manager_id):
 #===================================================================================================================================
 #suprimer manager
 
-def supprimer_manager(request, manager_id):
-    manager = get_object_or_404(Manager, pk=manager_id)
+def supprimer_manager(request, manager_cin):
+    manager = get_object_or_404(Manager, pk=manager_cin)
     if request.method == 'POST':
         # Supprimer le manager uniquement si la méthode est POST
         manager.delete()

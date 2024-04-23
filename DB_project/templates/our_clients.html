@@ -136,7 +136,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> CIN <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Nom Complet <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Téléphone<span class="icon-arrow">&UpArrow;</span></th>
                                         <th> email <span class="icon-arrow">&UpArrow;</span></th>
@@ -147,7 +147,7 @@
                                 <tbody>
                                     {% for client in clients %}
                         <tr>
-                            <td>{{ client.id }}</td>
+                            <td>{{ client.cin }}</td>
                             <td>{{ client.name }}</td>
                             <td>{{ client.phone }}</td>
                             <td>{{ client.email }}</td>

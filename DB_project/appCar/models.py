@@ -60,7 +60,7 @@ class Reservation(models.Model):
     status = models.CharField(max_length=20, choices=status_choices, default='Pending')
 
     def _str_(self):
-        return f"Reservation for {self.car} by {self.username}"
+        return f"Reservation for {self.car} by {self.client}"
 
     
 class Administrator(models.Model):

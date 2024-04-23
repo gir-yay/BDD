@@ -32,9 +32,9 @@ urlpatterns = [
     path('our-cars/', our_cars, name='our_cars'),
     path('our-reservations/', our_reservations, name='our_reservations'),
     # URL pour la modification d'un gestionnaire
-    path('modifier-manager/<int:manager_id>/', modifier_manager, name='modifier_manager'),
+    path('modifier-manager/<str:manager_cin>/', modifier_manager, name='modifier_manager'),
     # URL pour la suppression d'un gestionnaire
-    path('supprimer-manager/<int:manager_id>/', supprimer_manager, name='supprimer_manager'),
+    path('supprimer-manager/<str:manager_cin>/', supprimer_manager, name='supprimer_manager'),
     path('ajouter-manager/', ajouter_manager, name='ajouter_manager'),
    
     
