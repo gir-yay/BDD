@@ -34,7 +34,7 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li class="active">
+			<li >
 				 <a href="{% url 'our_clients' %}">
 
 					<i class='bx bxs-group' ></i>
@@ -47,7 +47,7 @@
 					<span class="text">Voitures</span>
 				</a>
 			</li>
-            <li>
+            <li class="active">
 				<a href="{% url 'our_reservations' %}">
 				<i class='bx bxs-group' ></i>
 					<span class="text">Reservation</span>
@@ -139,11 +139,11 @@
                                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Client <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Voiture<span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Manager <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> date <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> status <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
+										<th> Facture <span class="icon-arrow">&UpArrow;</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -152,12 +152,16 @@
                             <td>{{ reservation.id }}</td>
                             <td>{{ reservation.client_id }}</td>
                             <td>{{ reservation.car_id }}</td>
-                            <td>{{ reservation.manager_id }}</td>
                             <td>{{ reservation.reservation_date }}</td>
                             <td>{{ reservation.status}}</td>
                             <td>
                                 <a href="" class="btn btn-primary">Modifier</a>
                             </td>
+							<td>
+								<form action="" method="post" id="telecharger">
+									{% csrf_token %}
+									<button type="submit">Télécharger</button>
+								</form>
                             <td>
                                 <form action="" method="post" id="form-supprimer">
                                     {% csrf_token %}
