@@ -18,15 +18,16 @@ class Command(BaseCommand):
 
     def generate_cars(self):
         brands = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW']
+        img = ['car-1.jpg', 'car-2.jpg', 'car-3.jpg', 'car-4.jpg', 'car-5.jpg', 'car-6.jpg']
         for _ in range(10):  # Generate 10 cars
-            price = round(random.uniform(10000, 50000), 2)
+            price = round(random.uniform(1000, 5000), 2)
             Car.objects.create(
-                registration_number=fake.random_int(min=1000, max=9999),
+                matricule=fake.random_int(min=10000, max=99999),
                 brand=random.choice(brands),
                 model=fake.word(),
                 year=fake.random_int(min=2000, max=2024),
                 price=price,
-                image=fake.image_url(),
+                image=random.choice(img),
                 status=random.choice(['Available', 'Unavailable']),
                 fuel=random.choice(['Petrol', 'Diesel', 'Electric']),
                 kilometer=fake.random_int(min=1000, max=100000),
@@ -46,16 +47,20 @@ class Command(BaseCommand):
             )
 
     def generate_clients(self):
+        cin_ = ['EE123456', 'LC654321', 'BC987654', 'AC456789', 'MM321654']
         for _ in range(5):  # Generate 5 clients
             Client.objects.create(
+                cin =cin_[_],
                 name=fake.name(),
                 email=fake.email(),
                 phone=fake.phone_number(),
             )
 
     def generate_managers(self):
+        cin_ = ['EE188456', 'MM67721']
         for _ in range(2):  # Generate 2 managers
             Manager.objects.create(
+                cin =cin_[_],
                 name=fake.name(),
                 username=fake.user_name(),
                 phone=fake.phone_number(),
@@ -66,17 +71,17 @@ class Command(BaseCommand):
     def generate_reservations(self):
         cars = Car.objects.all()
         clients = Client.objects.all()
-        managers = Manager.objects.all()
         for _ in range(10):  # Generate 10 reservations
             Reservation.objects.create(
                 car=random.choice(cars),
                 client=random.choice(clients),
-                manager=random.choice(managers),
                 status=random.choice(['Pending', 'Accepted', 'Rejected']),
             )
 
     def generate_admins(self):
+        cin_ = 'BN789564'
         Administrator.objects.create(
+            cin =cin_ ,
             username=fake.user_name(),
             name=fake.name(),
             phone=fake.phone_number(),

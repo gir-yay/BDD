@@ -1,8 +1,7 @@
 from django.db import models
 
 class Car(models.Model):
-    id = models.AutoField(primary_key=True)
-    registration_number = models.CharField(max_length=10)
+    matricule = models.CharField(max_length=10 , primary_key=True)
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     year = models.IntegerField()
@@ -31,7 +30,7 @@ class Car(models.Model):
         return f"{self.brand} {self.model} - {self.year}"
 
 class Client(models.Model):
-    id = models.AutoField(primary_key=True)
+    cin = models.CharField(primary_key=True ,max_length=10)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
@@ -40,7 +39,7 @@ class Client(models.Model):
         return self.username
 
 class Manager(models.Model):
-    id = models.AutoField(primary_key=True)
+    cin = models.CharField(primary_key=True ,max_length=10)
     name = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
@@ -56,7 +55,6 @@ class Reservation(models.Model):
     id = models.AutoField(primary_key=True)
     car = models.ForeignKey(Car , on_delete=models.CASCADE)
     client = models.ForeignKey(Client , on_delete=models.CASCADE)
-    manager = models.ForeignKey(Manager , on_delete=models.CASCADE)
     reservation_date = models.DateField(auto_now_add=True)
     status_choices = [('Pending', 'Pending'),('Accepted', 'Accepted'),('Rejected', 'Rejected'),]
     status = models.CharField(max_length=20, choices=status_choices, default='Pending')
@@ -66,7 +64,7 @@ class Reservation(models.Model):
 
     
 class Administrator(models.Model):
-    id = models.AutoField(primary_key=True)
+    cin = models.CharField(primary_key=True ,max_length=10)
     username = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
