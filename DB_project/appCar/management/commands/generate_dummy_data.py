@@ -82,7 +82,7 @@ class Command(BaseCommand):
         cin_ = 'BN789564'
         Administrator.objects.create(
             cin =cin_ ,
-            username=fake.user_name(),
+            username='admin',
             name=fake.name(),
             phone=fake.phone_number(),
             email=fake.email(),
