@@ -16,6 +16,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from pymongo import MongoClient
+from .forms import AdminForm
 
 # Configuration de la connexion à MongoDB
 client = MongoClient('localhost', 27017)
@@ -179,6 +180,15 @@ def ajouter_manager(request):
         form = ManagerForm()
     return render(request, 'ajouter_manager.html', {'form': form})
 
+def ajouter_admin(request):
+    if request.method == 'POST':
+        form = AdminForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('our_admins')  # Rediriger vers le tableau de bord après l'ajout
+    else:
+        form = AdminForm()
+    return render(request, 'ajouter_admin.html', {'form': form})
 
 
 def ajouter_voiture(request):

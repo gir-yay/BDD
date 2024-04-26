@@ -29,7 +29,7 @@
 		<section id="sidebar">
 			<a href="#" class="brand">
 				<i class="bx ri-open-arm-fill"></i>
-				<span class="text">CarBook</span>
+				<span class="text">Vroum</span>
 			</a>
 			<ul class="side-menu top">
 				<li>
@@ -49,6 +49,12 @@
 						<i class="bx bxs-group"></i>
 						<span class="text">Admins</span>
 					</a>
+				</li>
+				<li>
+					<a href="{% url 'ajouter_admin' %}">
+						<i class="bx bxs-group"></i>
+						<span class="text">Ajouter un admin</span></a
+					>
 				</li>
 			</ul>
 			<ul class="side-menu">
@@ -119,7 +125,7 @@
 									<thead>
 										<tr>
 											<th>
-												Id
+												CIN
 												<span class="icon-arrow"
 													>&UpArrow;</span
 												>
@@ -149,7 +155,7 @@
 									<tbody>
 										{% for admin in administrators %}
 										<tr>
-											<td>{{ admin.id }}</td>
+											<td>{{ admin.cin }}</td>
 											<td>{{ admin.name }}</td>
 											<td>{{ admin.username }}</td>
 											<td>{{ admin.email }}</td>

@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view,logout_view,our_clients,our_cars,our_reservations
+from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view,logout_view,our_clients,our_cars,our_reservations, ajouter_admin
+
 
 
 urlpatterns = [
@@ -36,6 +37,8 @@ urlpatterns = [
     # URL pour la suppression d'un gestionnaire
     path('supprimer-manager/<str:manager_cin>/', supprimer_manager, name='supprimer_manager'),
     path('ajouter-manager/', ajouter_manager, name='ajouter_manager'),
+    path('ajouter-admin/', ajouter_admin, name='ajouter_admin'),
+
    
     
 
