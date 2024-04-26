@@ -20,13 +20,13 @@ class Command(BaseCommand):
         brands = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW']
         img = ['car-1.jpg', 'car-2.jpg', 'car-3.jpg', 'car-4.jpg', 'car-5.jpg', 'car-6.jpg']
         for _ in range(10):  # Generate 10 cars
-            price = round(random.uniform(1000, 5000), 2)
+           
             Car.objects.create(
                 matricule=fake.random_int(min=10000, max=99999),
                 brand=random.choice(brands),
                 model=fake.word(),
                 year=fake.random_int(min=2000, max=2024),
-                price=price,
+                price=fake.random_int(min=1000, max=8000),
                 image=random.choice(img),
                 status=random.choice(['Available', 'Unavailable']),
                 fuel=random.choice(['Petrol', 'Diesel', 'Electric']),

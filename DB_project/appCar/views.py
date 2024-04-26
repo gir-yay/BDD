@@ -17,10 +17,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from pymongo import MongoClient
 
+# Configuration de la connexion à MongoDB
+client = MongoClient('localhost', 27017)
+db = client['locationv_db']
 
 
 def home(request):
-    return render(request, 'home.html')
+    cars = Car.objects.all()[:6]
+    return render(request, 'home.html' , {'cars': cars})
 
 
 
@@ -34,10 +38,6 @@ def authenticate_admin(username, password):
     admin = admin_collection.find_one({'username': username, 'password': password})
     return admin is not None
 
-
-# Configuration de la connexion à MongoDB
-client = MongoClient('localhost', 27017)
-db = client['locationv_db']
 
 
 
@@ -133,6 +133,8 @@ def our_cars(request):
     cars = Car.objects.all()
     return render(request, 'our_cars.html', {'cars': cars})
 
+
+    
 
 def our_reservations(request):
     reservations = Reservation.objects.all()
