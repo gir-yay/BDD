@@ -168,6 +168,13 @@ def supprimer_manager(request, manager_cin):
         # Rediriger vers une page d'erreur ou une autre vue si la méthode n'est pas POST
         return redirect('page_d_erreur')
     
+#===========================================================
+#view car
+
+def view_car(request, matricule):
+    car = get_object_or_404(Car, pk=matricule)
+    return render(request, 'view_car.html', {'car': car})
+    
 #===================================================================================================================================
     # ajouter un manager
 def ajouter_manager(request):

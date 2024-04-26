@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'css/one_car.css' %}" />
+
+		<title>Car</title>
+	</head>
+	<body>
+		<div class="card-wrapper">
+			<div class="card">
+				<!-- card left -->
+				<div class="product-imgs">
+					<div class="img-display">
+						<div class="img-showcase">
+							<img
+								src="{% static 'images/'|add:car.image %}"
+								alt="car image"
+							/>
+						</div>
+					</div>
+				</div>
+				<!-- card right -->
+				<div class="product-content">
+					<h2 class="product-title">
+						{{car.brand}} - {{car.model}} - {{car.year}}
+					</h2>
+					<a href="#" class="product-link"
+						>Matricule : {{car.matricule}}</a
+					>
+					<div class="product-rating">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+
+						<span>{{car.status}}</span>
+					</div>
+
+					<div class="product-price">
+						<p class="new-price">
+							<span>Fuel: {{car.fuel}}</span>
+						</p>
+						<p class="new-price">
+							<span>kilometer: {{car.kilometer}}</span>
+						</p>
+						<p class="new-price">
+							<span>Seats: {{car.seats}}</span>
+						</p>
+						<p class="new-price">
+							<span>Price: {{car.price}}</span>
+						</p>
+					</div>
+
+					<div class="product-detail">
+						<h2>Description</h2>
+						<p>{{car.description}}</p>
+						<ul>
+							{% if car.air_conditioning %}
+							<li><span>Air conditioning</span></li>
+							{% endif %} {% if car.child_seat %}
+							<li><span>Child seat</span></li>
+							{% endif %} {% if car.gps %}
+							<li><span>GPS</span></li>
+							{% endif %} {% if car.music %}
+							<li><span>Music</span></li>
+							{% endif %} {% if car.seat_belt %}
+							<li><span>Seat belt</span></li>
+							{% endif %} {% if car.sleeping_bed %}
+							<li><span>Sleeping Bed</span></li>
+							{% endif %} {% if car.bluetooth %}
+							<li><span>Bluetooth</span></li>
+							{% endif %} {% if car.onboard_computer %}
+							<li><span>Onboard computer</span></li>
+							{% endif %} {% if car.audio_input %}
+							<li><span>Audio input</span></li>
+							{% endif %} {% if car.car_kit %}
+							<li><span>Car kit</span></li>
+							{% endif %} {% if car.climate_control %}
+							<li><span>Climate Control</span></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
