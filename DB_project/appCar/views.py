@@ -205,6 +205,17 @@ def supprimer_manager(request, manager_cin):
         # Rediriger vers une page d'erreur ou une autre vue si la méthode n'est pas POST
         return redirect('page_d_erreur')
     
+
+def supprimer_car(request, matricule):
+    car = get_object_or_404(Car, pk=matricule)
+    if request.method == 'POST':
+        # Supprimer la voiture uniquement si la méthode est POST
+        car.delete()
+        return redirect('our_cars')
+    else:
+        # Rediriger vers une page d'erreur ou une autre vue si la méthode n'est pas POST
+        return redirect('page_d_erreur')
+    
 #===========================================================
 #view car
 

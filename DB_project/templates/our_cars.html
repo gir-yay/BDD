@@ -26,6 +26,12 @@
 		/>
 
 	<title>Cars of Vroum </title>
+	<style>
+		a {
+			text-decoration: none;
+			color: white;
+		}
+	</style>
 </head>
 <body>
 
@@ -219,12 +225,24 @@
 											<p class="card-price">
 												<strong>{{car.price}}</strong> / day
 											</p>
-
 											
+											<button class="btn" style="background-color: rgb(43, 213, 128);">
+												<a href="">Modifier</a>
+											</button>
 
+											<form action="{% url 'supprimer_car' car.matricule %}" method="post">
+											{% csrf_token %}
+											<button class="btn" style="background-color: rgb(213, 53, 53);color: white;"
+											onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?');"
+											>
+											Supprimer
+											</button>
+											</form>
 											<button class="btn">
 												<a href="{% url 'view_car' car.matricule %}">View</a>
 											</button>
+
+											
 										
 									</div>
 
