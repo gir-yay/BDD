@@ -145,7 +145,7 @@
             <input type="text" id="price" name="price" value="{{ form.price.value }}">
             
             <label for="image">Image</label>
-            <input type="file" id="image" name="image" value="{{ form.image.value }}">
+            <input type="file" id="image" name="image" accept="{{ form.image.url }}">
           
 
             <label for="description">Description</label>
