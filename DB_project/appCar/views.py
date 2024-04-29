@@ -150,7 +150,11 @@ def modifier_manager(request, manager_cin):
         form = ManagerForm(request.POST, instance=manager)
         if form.is_valid():
             form.save()
+            print("Form saved successfully")
             return redirect('our_managers')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
     else:
         form = ManagerForm(instance=manager)
     return render(request, 'modifier_manager.html', {'form': form})

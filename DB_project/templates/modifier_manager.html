@@ -17,8 +17,12 @@
 	<body>
 		<div class="container">
 			<h2>Modifier Manager</h2>
-			<form method="post">
+			<form method="POST">
 				{% csrf_token %}
+				<div class="form-group" hidden>
+					<label for="id_cin">CIN:</label>
+					{{ form.cin }}
+				</div>
 				<div class="form-group">
 					<label for="id_name">Nom Complet:</label>
 					{{ form.name }}
