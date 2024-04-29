@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ajouter client</title>
+	
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+	<!-- My CSS -->
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/our_manager.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/modifier_manager.css' %}"/>
+</head>
+<body>
+	
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+
+			<i class="bx ri-open-arm-fill "></i>
+			<span class="text">Vroum</span>
+		</a>
+		<ul class="side-menu top">
+			<li >
+				<a href="{% url 'dashboard_manager' %}">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li >
+				 <a href="{% url 'our_clients' %}">
+
+					<i class='bx bxs-group' ></i>
+					<span class="text">Clients</span>
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'our_cars' %}">
+				<i class='bx bxs-group' ></i>
+					<span class="text">Voitures</span>
+				</a>
+			</li>
+            <li>
+				<a href="{% url 'our_reservations' %}">
+				<i class='bx bxs-group' ></i>
+					<span class="text">Reservation</span>
+				</a>
+			</li>
+            <li class="active">
+				<a href="{% url 'ajouter_client' %}">
+				<i class='bx bxs-group' ></i>
+					<span class="text">Ajouter un client</span>
+				</a>
+			</li>
+
+		</ul>
+		<ul class="side-menu">
+			<li> 
+				<a href="" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<form action="{% url 'logout' %}" method="Post">
+						{% csrf_token %}
+                     <button class="logout-btn">se déconnecter</button>
+                    </form>
+				</a>
+            
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class="bx bx-menu"></i>
+			<a href="#" class="nav-link"></a>
+			<form action="#">
+				<div class="form-input"></div>
+			</form>
+
+			<a href="#" class="notification">
+				<i></i>
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main style="background-color: #eee">
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class="bx bx-chevron-right"></i></li>
+						<li>
+							<a class="active" href="{% url 'home' %}">Ajouter client</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="table-data">
+				<div class="order">
+					<main class="table" id="customers_table">
+						<div class="container">
+							<h2>Ajouter un client</h2>
+							<form method="post" id="form">
+								{% csrf_token %}
+								<div class="form-group">
+									<label for="cin">CIN:</label>
+									<input type="text" id="cin" name="cin" />
+								</div>
+								<div class="form-group">
+									<label for="name">Nom Complet:</label>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										required
+									/>
+								</div>
+                                <div class="form-group">
+									<label for="email">Email:</label>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										required
+									/>
+								</div>
+								
+								<div class="form-group">
+									<label for="phone">Téléphone:</label>
+									<input
+										type="text"
+										id="phone"
+										name="phone"
+										required
+									/>
+								</div>
+								
+								
+								<center>
+									<button type="submit" class="btn">
+										Ajouter
+									</button>
+								</center>
+							</form>
+						</div>
+					</main>
+				</div>
+			</div>
+		</main>
+	</section>
+</div>
+
+</body>	
+</html>

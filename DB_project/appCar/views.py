@@ -234,6 +234,16 @@ def ajouter_admin(request):
         form = AdminForm()
     return render(request, 'ajouter_admin.html', {'form': form})
 
+def ajouter_client(request):
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('our_clients')  # Rediriger vers le tableau de bord après l'ajout
+    else:
+        form = ClientForm()
+    return render(request, 'ajouter_client.html', {'form': form})
+
 
 def ajouter_voiture(request):
     if request.method == 'POST':
