@@ -3,6 +3,7 @@ from .models import Car
 from .models import Manager
 from .models import Administrator
 from .models import Client
+from .models import Reservation
 
 
 class VoitureForm(forms.ModelForm):
@@ -25,4 +26,10 @@ class AdminForm(forms.ModelForm):
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
+        fields = '__all__'
+
+
+class ReservationForm(forms.ModelForm):
+    class Meta:
+        model = Reservation
         fields = '__all__'

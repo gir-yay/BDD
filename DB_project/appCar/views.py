@@ -251,6 +251,20 @@ def supprimer_car(request, matricule):
         # Rediriger vers une page d'erreur ou une autre vue si la méthode n'est pas POST
         return redirect('page_d_erreur')
     
+
+
+#supprimer reservation
+
+def supprimer_reservation(request, id):
+    reservation = get_object_or_404(Reservation, pk=id)
+    if request.method == 'POST':
+        # Supprimer la réservation uniquement si la méthode est POST
+        reservation.delete()
+        return redirect('our_reservations')
+    else:
+        # Rediriger vers une page d'erreur ou une autre vue si la méthode n'est pas POST
+        return redirect('page_d_erreur')
+    
 #===========================================================
 #view car
 
