@@ -17,6 +17,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from pymongo import MongoClient
 from .forms import AdminForm
+from .forms import ClientForm
 
 # Configuration de la connexion à MongoDB
 client = MongoClient('localhost', 27017)
@@ -158,6 +159,38 @@ def modifier_manager(request, manager_cin):
     else:
         form = ManagerForm(instance=manager)
     return render(request, 'modifier_manager.html', {'form': form})
+
+
+
+#client modification
+def modifier_client(request, client_cin):
+    client = get_object_or_404(Client, pk=client_cin)
+    if request.method == 'POST':
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            print("Form saved successfully")
+            return redirect('our_clients')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:
+        form = ClientForm(instance=client)
+    return render(request, 'modifier_client.html', {'form': form})
+
+
+#supprimer client
+
+def supprimer_client(request, client_cin):
+    client = get_object_or_404(Client, pk=client_cin)
+    if request.method == 'POST':
+        # Supprimer le manager uniquement si la méthode est POST
+        client.delete()
+        return redirect('our_clients')
+    else:
+        # Rediriger vers une page d'erreur ou une autre vue si la méthode n'est pas POST
+        return redirect('page_d_erreur')
+    
 
 #===================================================================================================================================
 #suprimer manager

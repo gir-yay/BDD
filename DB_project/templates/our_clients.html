@@ -12,7 +12,7 @@
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'css/our_manager.css' %}">
 
-	<title>Admin CarBook</title>
+	<title>Our clients</title>
 </head>
 
 
@@ -24,7 +24,7 @@
 		<a href="#" class="brand">
 
 			<i class="bx ri-open-arm-fill "></i>
-			<span class="text">CarBook</span>
+			<span class="text">Vroum</span>
 		</a>
 		<ul class="side-menu top">
 			<li >
@@ -151,10 +151,10 @@
                             <td>{{ client.phone }}</td>
                             <td>{{ client.email }}</td>
                             <td>
-                                <a href="" class="btn btn-primary">Modifier</a>
+                                <a href="{% url 'modifier_client' client.cin %}" class="btn btn-primary">Modifier</a>
                             </td>
                             <td>
-                                <form action="" method="post" id="form-supprimer">
+                                <form action="{% url 'supprimer_client' client.cin %}" method="post" id="form-supprimer">
                                     {% csrf_token %}
                                     <!-- Vos autres champs de formulaire ici -->
                                     <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?');">Supprimer</button>
