@@ -149,7 +149,7 @@
                 
                         </section>
         <section >
-                           
+                         
 			
         <div class="container">
 						
@@ -160,7 +160,7 @@
 								<div class="featured-car-card">
 									<figure class="card-banner">
 										<img
-											src="{% static 'images/'|add:car.image %}"
+											src="{{car.image.url}}"
 											alt="Toyota RAV4 2021"
 											loading="lazy"
 											width="440"
@@ -227,12 +227,12 @@
 											</p>
 											
 											<button class="btn" style="background-color: rgb(43, 213, 128);">
-												<a href="">Modifier</a>
+												<a href="{% url 'modifier_car' car.matricule %}">Modifier</a>
 											</button>
 
 											<form action="{% url 'supprimer_car' car.matricule %}" method="post">
 											{% csrf_token %}
-											<button class="btn" style="background-color: rgb(213, 53, 53);color: white;"
+											<button class="btn" style="background-color: rgb(213, 53, 53);"
 											onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?');"
 											>
 											Supprimer

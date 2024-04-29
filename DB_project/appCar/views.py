@@ -179,6 +179,23 @@ def modifier_client(request, client_cin):
     return render(request, 'modifier_client.html', {'form': form})
 
 
+#modifier voiture
+def modifier_car(request, matricule):
+    car = get_object_or_404(Car, pk=matricule)
+    if request.method == 'POST':
+        form = VoitureForm(request.POST, request.FILES, instance=car)
+        if form.is_valid():
+            form.save()
+            print("Form saved successfully")
+            return redirect('our_cars')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:
+        form = VoitureForm(instance=car)
+    return render(request, 'modifier_car.html', {'form': form})
+
+
 #supprimer client
 
 def supprimer_client(request, client_cin):
