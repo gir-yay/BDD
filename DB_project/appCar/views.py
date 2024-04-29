@@ -195,6 +195,24 @@ def modifier_car(request, matricule):
         form = VoitureForm(instance=car)
     return render(request, 'modifier_car.html', {'form': form})
 
+#ajouter voiture
+
+def ajouter_voiture(request):
+    if request.method == 'POST':
+        form = VoitureForm(request.POST , request.FILES )
+        if form.is_valid():
+            form.save()
+            return redirect('our_cars')  # Rediriger vers la page d'accueil après l'ajout
+        
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:        
+        form = VoitureForm()
+    return render(request, 'ajouter_voiture.html', {'form': form})
+
+
+#===================================================================================================================================
 
 #supprimer client
 
@@ -271,16 +289,3 @@ def ajouter_client(request):
     else:
         form = ClientForm()
     return render(request, 'ajouter_client.html', {'form': form})
-
-
-def ajouter_voiture(request):
-    if request.method == 'POST':
-        form = VoitureForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')  # Rediriger vers la page d'accueil après l'ajout
-    else:
-        form = VoitureForm()
-    return render(request, 'ajouter_voiture.html', {'form': form})
-
-

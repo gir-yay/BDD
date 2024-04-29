@@ -24,7 +24,6 @@ from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('ajouter_voiture/', ajouter_voiture, name='ajouter_voiture'), 
     path('login/', login_view , name='login_view'),
     path('logout/', logout_view, name='logout'),
     path('admin_dashboard/', dashboard, name='admin_dashboard'),
@@ -34,7 +33,7 @@ urlpatterns = [
     path('our-clients/', our_clients, name='our_clients'),
     path('our-cars/', our_cars, name='our_cars'),
     path('view-car/<str:matricule>', view_car, name='view_car'),
-
+    path('ajouter_voiture/', ajouter_voiture, name='ajouter_voiture'),  
     path('our-reservations/', our_reservations, name='our_reservations'),
     # URL pour la modification d'un gestionnaire
     path('modifier-manager/<str:manager_cin>/', modifier_manager, name='modifier_manager'),

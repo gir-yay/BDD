@@ -157,7 +157,7 @@
             <label for="status">Status</label>
             <select id="status" name="status">
                 <option value="Available" {% if form.status.value == 'Available' %}selected{% endif %}>Available</option>
-                <option value="Reserved" {% if form.status.value == 'Unavailable' %}selected{% endif %}>Unavailable</option>
+                <option value="Unavailable" {% if form.status.value == 'Unavailable' %}selected{% endif %}>Unavailable</option>
             </select>
             
             <label for="fuel">Fuel</label>
