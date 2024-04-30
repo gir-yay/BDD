@@ -182,12 +182,16 @@ def modifier_client(request, client_cin):
 #modifier reservation
 def modifier_reservation(request, id):
     reservation = get_object_or_404(Reservation, pk=id)
+    #change the status of the reserved car to available
+    Car.objects.filter(pk=reservation.car.pk).update(status='Available')
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
          # Get the form data
         car_id = form['car'].value()
         client_id = form['client'].value()
         status = form['status'].value()
+        #change the status of the reserved car to unavailable
+        Car.objects.filter(pk=car_id).update(status='Unavailable')
 
         # Update the reservation using MongoDB query
         Reservation.objects.filter(pk=reservation.pk).update(
