@@ -238,9 +238,19 @@
 											Supprimer
 											</button>
 											</form>
-											<button class="btn">
+											
+											 
+
+											<button class="btn" style="margin-left: 45%; width: 70px;">
 												<a href="{% url 'view_car' car.matricule %}">View</a>
 											</button>
+
+											{% if car.status == 'Available' %}
+											<button class="btn" style="background-color: rgb(137, 87, 184);">
+												<a href="">Reserver</a>
+											</button>
+											{% endif %}
+
 
 											
 										
