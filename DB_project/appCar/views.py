@@ -18,6 +18,7 @@ from django.contrib.auth import logout
 from pymongo import MongoClient
 from .forms import AdminForm
 from .forms import ClientForm
+from .forms import ReservationForm
 
 # Configuration de la connexion à MongoDB
 client = MongoClient('localhost', 27017)
@@ -177,6 +178,22 @@ def modifier_client(request, client_cin):
     else:
         form = ClientForm(instance=client)
     return render(request, 'modifier_client.html', {'form': form})
+
+#modifier reservation
+def modifier_reservation(request, id):
+    reservation = get_object_or_404(Reservation, pk=id)
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            print("Form saved successfully")
+            return redirect('our_reservations')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:
+        form = ReservationForm(instance=reservation)
+    return render(request, 'modifier_reservation.html', {'form': form})
 
 
 #modifier voiture
