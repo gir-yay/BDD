@@ -105,7 +105,7 @@
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="{% url 'home' %}">Home</a>
+							<a class="active" href="{% url 'home' %}">Modifier reservation</a>
 						</li>
 					</ul>
 				</div>
@@ -124,26 +124,7 @@
 			<h2>Modifier Reservation</h2>
 			<form method="POST" id="form" enctype="multipart/form-data">
 				{% csrf_token %}
-				<div class="form-group" hidden>
-					<label for="id">Id:</label>
-					{{ form.id }}
-				</div>
-				<div class="form-group" >
-					<label for="id_car_id">Matricule:</label>
-					{{ form.car }}
-				</div>
-                <div class="form-group">
-                    <label for="id_client_id">Client:</label>
-                    {{ form.client }}
-				
-				<div class="form-group" hidden>
-					<label for="id_reservation_date">Date de réservation:</label>
-					{{ form.reservation_date }}
-				</div>
-				<div class="form-group">
-					<label for="id_status">Status</label>
-					{{ form.status }}
-				</div>
+				 {{ form.as_p }}
 				
 				<center>
 				<button type="submit">Enregistrer</button>
