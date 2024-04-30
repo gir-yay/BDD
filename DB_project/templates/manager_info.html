@@ -18,12 +18,12 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 		/>
 		<!-- My CSS -->
-
 		{% load static %}
 		<link rel="stylesheet" href="{% static 'css/our_manager.css' %}" />
 
-		<title>Manager Vroum</title>
+		<title>Mes info</title>
 	</head>
+
 	<body>
 		<!-- SIDEBAR -->
 		<section id="sidebar">
@@ -38,7 +38,7 @@
 						<span class="text">Dashboard</span>
 					</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="">
 						<i class="bx bxs-dashboard"></i>
 						<span class="text">Modifier mes info</span>
@@ -56,20 +56,12 @@
 						<span class="text">Voitures</span>
 					</a>
 				</li>
-				<li class="active">
+				<li>
 					<a href="{% url 'our_reservations' %}">
 						<i class="bx bxs-group"></i>
 						<span class="text">Reservation</span>
 					</a>
 				</li>
-				<!--
-				<li>
-					<a href="">
-						<i class="bx bxs-group"></i>
-						<span class="text">Ajouter une réservation</span>
-					</a>
-				</li>
-				-->
 			</ul>
 			<ul class="side-menu">
 				<li>
@@ -115,7 +107,7 @@
 							<li><i class="bx bx-chevron-right"></i></li>
 							<li>
 								<a class="active" href="{% url 'home' %}"
-									>Home</a
+									>Mes info</a
 								>
 							</li>
 						</ul>
@@ -135,118 +127,11 @@
 									<i class="bx bx-search"></i>
 								</div>
 							</section>
-							<section class="table__body">
-								<table>
-									<thead>
-										<tr>
-											<th>
-												Id
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												Client
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												Voiture<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												date
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												status
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												Modifier
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												Supprimer
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-											<th>
-												Facture
-												<span class="icon-arrow"
-													>&UpArrow;</span
-												>
-											</th>
-										</tr>
-									</thead>
-									<tbody>
-										{% for reservation in reservations %}
-										<tr>
-											<td>{{ reservation.id }}</td>
-											<td>{{ reservation.client_id }}</td>
-											<td>{{ reservation.car_id }}</td>
-											<td>
-												{{reservation.reservation_date}}
-											</td>
-											<td>{{ reservation.status}}</td>
-											<td>
-												<a
-													href=""
-													class="btn btn-primary"
-													>Modifier</a
-												>
-											</td>
-											<td>
-												<form
-													action="{% url 'supprimer_reservation' reservation.id %}"
-													method="post"
-													id="form-supprimer"
-												>
-													{% csrf_token %}
-													<!-- Vos autres champs de formulaire ici -->
-													<button
-														type="submit"
-														onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?');"
-													>
-														Supprimerr
-													</button>
-												</form>
-											</td>
-											<td>
-												<form
-													action=""
-													method="post"
-													id="telecharger"
-												>
-													{% csrf_token %}
-													<button type="submit">
-														Télecharger
-													</button>
-												</form>
-											</td>
-										</tr>
-										{% endfor %}
-									</tbody>
-								</table>
-							</section>
+							<section class="table__body"></section>
 						</main>
 					</div>
 				</div>
 			</main>
-			<!-- MAIN -->
 		</section>
-		<!-- CONTENT -->
-
-		<script src="{% static 'js/adminJS.js' %}"></script>
-		<script src="{% static 'js/tableJS.js' %}"></script>
 	</body>
 </html>
