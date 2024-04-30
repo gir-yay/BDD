@@ -184,13 +184,19 @@ def modifier_reservation(request, id):
     reservation = get_object_or_404(Reservation, pk=id)
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
-        if form.is_valid():
-            form.save()
-            print("Form saved successfully")
-            return redirect('our_reservations')  # Rediriger vers le tableau de bord après modification
-        else:
-            # Add debug print statements to check form errors
-            print("Form errors:", form.errors)
+         # Get the form data
+        car_id = form['car'].value()
+        client_id = form['client'].value()
+        status = form['status'].value()
+
+        # Update the reservation using MongoDB query
+        Reservation.objects.filter(pk=reservation.pk).update(
+                car=car_id,
+                client=client_id,
+                status=status
+            )
+        print("Form saved successfully")
+        return redirect('our_reservations')  # Redirect to the dashboard after modification
     else:
         form = ReservationForm(instance=reservation)
     return render(request, 'modifier_reservation.html', {'form': form})

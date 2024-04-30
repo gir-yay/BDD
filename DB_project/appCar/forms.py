@@ -32,4 +32,4 @@ class ClientForm(forms.ModelForm):
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ['car', 'client', 'status']
+        fields = '__all__'
