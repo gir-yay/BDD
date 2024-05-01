@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if request.session.cin %}
 
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
@@ -33,7 +34,7 @@
 				</a>
 			</li>
 			<li>
-					<a href="">
+					<a href="{% url 'admin_info' cin=request.session.cin %}">
 						<i class="bx bxs-dashboard"></i>
 						<span class="text">Modifier mes info</span>
 					</a>
@@ -190,3 +191,4 @@
     <script src="{% static 'js/tableJS.js' %}"></script>
 </body>
 </html>
+{% endif %}

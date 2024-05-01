@@ -31,15 +31,24 @@ def home(request):
 
 
 
+
+
 def authenticate_manager(username, password):
     manager_collection = db['appCar_manager']
-    manager = manager_collection.find_one({'username': username, 'password': password})
+    #find the cin of the manager
+    manager = Manager.objects.filter(username=username, password=password).first()
+    if manager:
+        return manager.cin
     return manager is not None
 
 def authenticate_admin(username, password):
     admin_collection = db['appCar_administrator']
-    admin = admin_collection.find_one({'username': username, 'password': password})
-    return admin is not None
+    #find the cin of the admin
+    admin = Administrator.objects.filter(username=username, password=password).first()
+    if admin:
+        return admin.cin
+    else:
+        return None
 
 
 
@@ -53,14 +62,17 @@ def login_view(request):
         is_admin = authenticate_admin(username, password)
         
         if is_manager:
+            request.session['cin'] = is_manager
 
             return redirect('dashboard_manager')
         elif is_admin:
+            request.session['cin'] = is_admin
             return redirect('admin_dashboard')
         else:
             return render(request, 'login.html', {'error': 'Identifiants invalides'})
     else:
         return render(request, 'login.html')
+
 
 
 def logout_view(request):
@@ -330,3 +342,21 @@ def ajouter_client(request):
     else:
         form = ClientForm()
     return render(request, 'ajouter_client.html', {'form': form})
+
+
+###############################################################
+#info admin
+def admin_info(request , cin):
+    admin = get_object_or_404(Administrator, pk=cin)
+    if request.method == 'POST':
+        form = AdminForm(request.POST , instance=admin)
+        if form.is_valid():
+            form.save()
+            print("Form saved successfully")
+            return redirect('our_admins')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:
+        form = AdminForm(instance=admin)
+    return render(request, 'admin_info.html', {'form': form})

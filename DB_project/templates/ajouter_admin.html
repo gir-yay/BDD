@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Ajouter admin</title>
+{% if request.session.cin %}
 
 		<link
 			href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
@@ -41,7 +42,7 @@
 				</a>
 			</li>
 			<li>
-					<a href="">
+					<a href="{% url 'admin_info' cin=request.session.cin %}">
 						<i class="bx bxs-dashboard"></i>
 						<span class="text">Modifier mes info</span>
 					</a>
@@ -162,3 +163,4 @@
 
 	</body>
 </html>
+{% endif %}

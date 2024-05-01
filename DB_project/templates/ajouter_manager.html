@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ajouter manager</title>
-	
+	{% if request.session.cin %}
+
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -31,7 +32,7 @@
 				</a>
 			</li>
 			<li>
-					<a href="">
+					<a href="{% url 'admin_info' cin=request.session.cin %}">
 						<i class="bx bxs-dashboard"></i>
 						<span class="text">Modifier mes info</span>
 					</a>
@@ -177,3 +178,4 @@
 
 </body>	
 </html>
+{% endif %}

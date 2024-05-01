@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		{% load static %}
+		{% if request.session.cin %} {% load static %}
 		<link rel="stylesheet" href="{% static 'css/one_car.css' %}" />
 
 		<title>Car</title>
@@ -99,3 +99,4 @@
 		</div>
 	</body>
 </html>
+{% endif %}

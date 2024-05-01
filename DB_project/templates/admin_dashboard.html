@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		{% if request.session.cin %}
 
 		<!-- Boxicons -->
 		<link
@@ -39,7 +40,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="{% url 'admin_info' cin=request.session.cin %}">
 						<i class="bx bxs-dashboard"></i>
 						<span class="text">Modifier mes info</span>
 					</a>
@@ -69,6 +70,7 @@
 				</li>
 			</ul>
 		</section>
+
 		<!-- SIDEBAR -->
 
 		<!-- CONTENT -->
@@ -141,3 +143,4 @@
 		<script src="{% static 'js/adminJS.js' %}"></script>
 	</body>
 </html>
+{% endif %}

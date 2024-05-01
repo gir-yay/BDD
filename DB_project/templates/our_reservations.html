@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		{% if request.session.cin %}
 
 		<!-- Boxicons -->
 		<link
@@ -250,3 +251,4 @@
 		<script src="{% static 'js/tableJS.js' %}"></script>
 	</body>
 </html>
+{% endif %}
