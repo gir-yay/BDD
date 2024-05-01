@@ -170,7 +170,7 @@
 												>
 											</th>
 											<th>
-												Modifier
+												Action
 												<span class="icon-arrow"
 													>&UpArrow;</span
 												>
@@ -200,11 +200,13 @@
 											</td>
 											<td>{{ reservation.status}}</td>
 											<td>
+												{% if reservation.status == "Pending" %}
 												<a
 													href=""
 													class="btn btn-primary"
-													>Action</a
+													>Accrpter/refuser</a
 												>
+												{% endif %}
 											</td>
 											<td>
 												<form
@@ -223,6 +225,8 @@
 												</form>
 											</td>
 											<td>
+											
+													{% if reservation.status == "Accepted" %}
 												<form
 													action=""
 													method="post"
@@ -233,6 +237,8 @@
 														Télecharger
 													</button>
 												</form>
+												{% endif %}
+												
 											</td>
 										</tr>
 										{% endfor %}
