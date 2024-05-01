@@ -369,7 +369,7 @@ def manager_info(request , cin):
         if form.is_valid():
             form.save()
             print("Form saved successfully")
-            return redirect('our_managers')  # Rediriger vers le tableau de bord après modification
+            return redirect('dashboard_manager')  # Rediriger vers le tableau de bord après modification
         else:
             # Add debug print statements to check form errors
             print("Form errors:", form.errors)
