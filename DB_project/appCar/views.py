@@ -360,3 +360,19 @@ def admin_info(request , cin):
     else:
         form = AdminForm(instance=admin)
     return render(request, 'admin_info.html', {'form': form})
+
+#info manager
+def manager_info(request , cin):
+    manager = get_object_or_404(Manager, pk=cin)
+    if request.method == 'POST':
+        form = ManagerForm(request.POST , instance=manager)
+        if form.is_valid():
+            form.save()
+            print("Form saved successfully")
+            return redirect('our_managers')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:
+        form = ManagerForm(instance=manager)
+    return render(request, 'manager_info.html', {'form': form})

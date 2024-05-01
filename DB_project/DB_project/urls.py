@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view,logout_view,our_clients,our_cars,our_reservations, ajouter_admin , view_car,modifier_client,supprimer_client,ajouter_client,supprimer_car,modifier_car,supprimer_reservation,modifier_reservation,admin_info
+from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view,logout_view,our_clients,our_cars,our_reservations, ajouter_admin , view_car,modifier_client,supprimer_client,ajouter_client,supprimer_car,modifier_car,supprimer_reservation,modifier_reservation,admin_info,manager_info
 
 
 
@@ -57,6 +57,9 @@ urlpatterns = [
     path('ajouter-client/', ajouter_client, name='ajouter_client'),
     #admin info
     path('admin-info/<str:cin>/' , admin_info , name='admin_info'),
+    path('manager-info/<str:cin>/' , manager_info , name='manager_info'),
+
+
 
    
     

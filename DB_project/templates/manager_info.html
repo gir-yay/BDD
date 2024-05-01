@@ -21,6 +21,8 @@
 		<!-- My CSS -->
 		{% load static %}
 		<link rel="stylesheet" href="{% static 'css/our_manager.css' %}" />
+			<link rel="stylesheet" type="text/css" href="{% static 'css/modifier_manager.css' %}"/>
+
 
 		<title>Mes info</title>
 	</head>
@@ -40,7 +42,7 @@
 					</a>
 				</li>
 				<li class="active">
-					<a href="">
+					<a href="{% url 'manager_info' cin=request.session.cin %}">
 						<i class="bx bxs-dashboard"></i>
 						<span class="text">Modifier mes info</span>
 					</a>
@@ -108,31 +110,52 @@
 							<li><i class="bx bx-chevron-right"></i></li>
 							<li>
 								<a class="active" href="{% url 'home' %}"
-									>Mes info</a
+									>Modifier mes info</a
 								>
 							</li>
 						</ul>
 					</div>
 				</div>
 
-				<div class="table-data">
-					<div class="order">
-						<main class="table" id="customers_table">
-							<section class="table__header">
-								<h1></h1>
-								<div class="input-group">
-									<input
-										type="search"
-										placeholder="Search Data..."
-									/>
-									<i class="bx bx-search"></i>
-								</div>
-							</section>
-							<section class="table__body"></section>
-						</main>
-					</div>
+				<div class="table-data"></div>
+				<div class="order">
+					
+                    <main class="table" id="customers_table">
+                    
+		<div class="container">
+			<h2>Modifier Manager</h2>
+			<form method="POST" id="form">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="id_cin">CIN:</label>
+					{{ form.cin }}
 				</div>
+				<div class="form-group">
+					<label for="id_name">Nom Complet:</label>
+					{{ form.name }}
+				</div>
+				<div class="form-group">
+					<label for="id_username">Nom d'utilisateur:</label>
+					{{ form.username }}
+				</div>
+				<div class="form-group">
+					<label for="id_email">Email:</label>
+					{{ form.email }}
+				</div>
+				<div class="form-group">
+					<label for="id_phone">Téléphone:</label>
+					{{ form.phone }}
+				</div>
+				<div class="form-group">
+					<label for="id_password">Mot de passe:</label>
+					{{ form.password }}
+				</div>
+				<center>
+				<button type="submit">Enregistrer</button>
+				</center>
+			</form>
 			</main>
+				</div>
 		</section>
 	</body>
 </html>
