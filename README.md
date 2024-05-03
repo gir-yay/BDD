@@ -14,6 +14,8 @@
 ==> create DB called locationv_db
 ==> open cmd in the project folder
 
+#### python manage.py makemigrations appCar
+
 #### python manage.py migrate
 
 // Generate dummy data for the database
