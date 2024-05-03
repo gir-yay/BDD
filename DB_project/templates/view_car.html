@@ -6,7 +6,7 @@
 		{% if request.session.cin %} {% load static %}
 		<link rel="stylesheet" href="{% static 'css/one_car.css' %}" />
 
-		<title>Car</title>
+		<title>Voiture</title>
 	</head>
 
 	<body>
@@ -38,30 +38,30 @@
 						<i class="fas fa-star"></i>
 						<i class="fas fa-star"></i>
 						<i class="fas fa-star"></i>
-						<span>Year : {{car.year}}</span>
+						<span>Année : {{car.year}}</span>
 						<br />
 						<br />
-						{% if car.status == 'Available' %}
+						{% if car.status == 'Disponible' %}
 						<span style="color: rgb(20, 169, 20)"
 							>{{ car.status }}</span
 						>
-						{% elif car.status == 'Unavailable' %}
+						{% elif car.status == 'Indisponible' %}
 						<span style="color: red">{{ car.status }}</span>
 						{% endif %}
 					</div>
 
 					<div class="product-price">
 						<p class="new-price">
-							<span>Fuel: {{car.fuel}}</span>
+							<span>Carburant: {{car.fuel}}</span>
 						</p>
 						<p class="new-price">
-							<span>kilometer: {{car.kilometer}}</span>
+							<span>kilometrage: {{car.kilometer}}</span>
 						</p>
 						<p class="new-price">
-							<span>Seats: {{car.seats}}</span>
+							<span>Sièges: {{car.seats}}</span>
 						</p>
 						<p class="new-price">
-							<span>Price: {{car.price}}</span>
+							<span>Prix: {{car.price}}</span>
 						</p>
 					</div>
 
@@ -70,27 +70,27 @@
 						<p>{{car.description}}</p>
 						<ul>
 							{% if car.air_conditioning %}
-							<li><span>Air conditioning</span></li>
+							<li><span>Climatisation</span></li>
 							{% endif %} {% if car.child_seat %}
-							<li><span>Child seat</span></li>
+							<li><span>Siège enfant</span></li>
 							{% endif %} {% if car.gps %}
 							<li><span>GPS</span></li>
 							{% endif %} {% if car.music %}
-							<li><span>Music</span></li>
+							<li><span>Musique</span></li>
 							{% endif %} {% if car.seat_belt %}
-							<li><span>Seat belt</span></li>
+							<li><span>Ceinture de sécurité</span></li>
 							{% endif %} {% if car.sleeping_bed %}
-							<li><span>Sleeping Bed</span></li>
+							<li><span>Lit de voyage</span></li>
 							{% endif %} {% if car.bluetooth %}
 							<li><span>Bluetooth</span></li>
 							{% endif %} {% if car.onboard_computer %}
-							<li><span>Onboard computer</span></li>
+							<li><span>Ordinateur de bord</span></li>
 							{% endif %} {% if car.audio_input %}
-							<li><span>Audio input</span></li>
+							<li><span>Entrée audio</span></li>
 							{% endif %} {% if car.car_kit %}
-							<li><span>Car kit</span></li>
+							<li><span>Kit de voiture</span></li>
 							{% endif %} {% if car.climate_control %}
-							<li><span>Climate Control</span></li>
+							<li><span>Régulation climatique</span></li>
 							{% endif %}
 						</ul>
 					</div>

@@ -192,7 +192,7 @@
 									<tbody>
 										{% for reservation in reservations %}
 										<tr>
-											<td>{{ reservation.id }}</td>
+											<td>{{ reservation.N_Serie }}</td>
 											<td>{{ reservation.client_id }}</td>
 											<td>{{ reservation.car_id }}</td>
 											<td>
@@ -200,7 +200,7 @@
 											</td>
 											<td>{{ reservation.status}}</td>
 											<td>
-												{% if reservation.status == "Pending" %}
+												{% if reservation.status == "En attente" %}
 												<a
 													href=""
 													class="btn btn-primary"
@@ -210,7 +210,7 @@
 											</td>
 											<td>
 												<form
-													action="{% url 'supprimer_reservation' reservation.id %}"
+													action="{% url 'supprimer_reservation' reservation.N_Serie %}"
 													method="post"
 													id="form-supprimer"
 												>
@@ -226,7 +226,7 @@
 											</td>
 											<td>
 											
-													{% if reservation.status == "Accepted" %}
+													{% if reservation.status == "Accepte" %}
 												<form
 													action=""
 													method="post"
