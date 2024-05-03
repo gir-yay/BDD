@@ -7,7 +7,7 @@ class Car(models.Model):
     year = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='', blank=True, null=True)
-    status = models.CharField(max_length=20, choices=[('Available', 'Available'), ('Unavailable', 'Unavailable')], default='Available')
+    status = models.CharField(max_length=20, choices=[('Disponible','Disponible'), ('Indisponible', 'Indisponible')], default='Disponible')
     fuel = models.CharField(max_length=255, blank=True)
     kilometer =models.IntegerField()
     seats = models.IntegerField(default=2)
@@ -22,7 +22,7 @@ class Car(models.Model):
     audio_input = models.BooleanField(default=False)
     car_kit = models.BooleanField(default=False)
     climate_control = models.BooleanField(default=False)
-    description = models.CharField(max_length=255 , default='No description')
+    description = models.CharField(max_length=255 , default='Pas de description')
 
 
     
@@ -56,8 +56,8 @@ class Reservation(models.Model):
     car = models.ForeignKey(Car , on_delete=models.CASCADE)
     client = models.ForeignKey(Client , on_delete=models.CASCADE)
     reservation_date = models.DateField(auto_now_add=True)
-    status_choices = [('Pending', 'Pending'),('Accepted', 'Accepted'),('Rejected', 'Rejected'),]
-    status = models.CharField(max_length=20, choices=status_choices, default='Pending')
+    status_choices = [('En attente', 'En attente'),('Accepte', 'Accepte'),('Rejete', 'Rejete'),]
+    status = models.CharField(max_length=20, choices=status_choices, default='En attente')
 
     def _str_(self):
         return f"Reservation for {self.car} by {self.client}"

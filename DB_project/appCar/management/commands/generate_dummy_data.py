@@ -28,8 +28,8 @@ class Command(BaseCommand):
                 year=fake.random_int(min=2000, max=2024),
                 price=fake.random_int(min=1000, max=8000),
                 image=random.choice(img),
-                status=random.choice(['Available', 'Unavailable']),
-                fuel=random.choice(['Petrol', 'Diesel', 'Electric']),
+                status=random.choice(['Disponible', 'Indisponible']),
+                fuel=random.choice(['Pétrole', 'Diesel', 'Eléctrique', 'Hybride']),
                 kilometer=fake.random_int(min=1000, max=100000),
                 seats=fake.random_int(min=2, max=7),
                 air_conditioning=fake.boolean(),
@@ -75,7 +75,7 @@ class Command(BaseCommand):
             Reservation.objects.create(
                 car=random.choice(cars),
                 client=random.choice(clients),
-                status=random.choice(['Pending', 'Accepted', 'Rejected']),
+                status=random.choice(['En attente', 'Accepte', 'Rejete']),
             )
 
     def generate_admins(self):
