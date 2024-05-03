@@ -52,10 +52,10 @@ class Manager(models.Model):
 
 
 class Reservation(models.Model):
-    id = models.AutoField(primary_key=True , editable=True)
+    id = models.AutoField(primary_key=True)
     car = models.ForeignKey(Car , on_delete=models.CASCADE)
     client = models.ForeignKey(Client , on_delete=models.CASCADE)
-    reservation_date = models.DateField(auto_now_add=True , editable=True , blank=True , null=True)
+    reservation_date = models.DateField(auto_now_add=True)
     status_choices = [('Pending', 'Pending'),('Accepted', 'Accepted'),('Rejected', 'Rejected'),]
     status = models.CharField(max_length=20, choices=status_choices, default='Pending')
 

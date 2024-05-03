@@ -1,71 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Animated Login Form</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		{% load static %}
-
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="{% static 'css/login.css' %}"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
-			rel="stylesheet"
-		/>
-		<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	</head>
-	<body>
-		<img class="wave" src="{% static 'images/wave.png' %}" alt="wave" />
-		<div class="container">
-			<div class="img">
-				<img src="{% static 'images/bg.svg' %}" alt="bg" />
-			</div>
-			<div class="login-content">
-				<form method="post" action="">
-					{% csrf_token %}
-					<img src="{% static 'images/avatar.svg' %}" alt="avatar" />
-					<h2 class="title">Welcome</h2>
-					<div class="input-div one">
-						<div class="i">
-							<i class="fas fa-user"></i>
-						</div>
-						<div class="div">
-							<h5>Username</h5>
-							<input
-								type="text"
-								id="username"
-								name="username"
-								required
-								class="input"
-							/><br />
-						</div>
-					</div>
-					<div class="input-div pass">
-						<div class="i">
-							<i class="fas fa-lock"></i>
-						</div>
-						<div class="div">
-							<h5>Password</h5>
-							<input
-								type="password"
-								id="password"
-								name="password"
-								required
-								class="input"
-							/><br />
-						</div>
-					</div>
-					<input type="submit" class="btn" value="Login" />
-				</form>
-
-				{% if error %}
+<head>
+    <!-- Design by foolishdeveloper.com -->
+        <title>login</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ 
+        {% load static %}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+ 
+</head>
+<body>
+        <div class="background">
+                <div class="shape"></div>
+                <div class="shape"></div>
+        </div>
+        <div>
+                {% if error %}
 				<p>{{ error }}</p>
-				{% endif %}
-			</div>
-		</div>
-		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-	</body>
+		{% endif %}
+        </div>
+        <form action="" method="POST">
+                {% csrf_token %}
+                <h3>S'authentifier ici</h3>
+
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" placeholder="nom d'utilisateur" id="username" name="username">
+
+                <label for="password">Mot de passe</label>
+                <input type="password" placeholder="mot de passe" id="password" name="password">
+
+                <button type="submit">S'authentifier</button>
+        </form>
+</body>
 </html>
