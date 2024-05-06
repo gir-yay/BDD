@@ -25,7 +25,7 @@ db = client['locationv_db']
 
 
 def home(request):
-    cars = Car.objects.filter(status = 'Available')[:6]
+    cars = Car.objects.filter(status = 'Disponible')[:6]
     return render(request, 'home.html' , {'cars': cars})
 
 
