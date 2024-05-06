@@ -56,6 +56,8 @@ class Reservation(models.Model):
     car = models.ForeignKey(Car , on_delete=models.CASCADE)
     client = models.ForeignKey(Client , on_delete=models.CASCADE)
     reservation_date = models.DateField(auto_now_add=True)
+    starting_date = models.DateField()
+    period = models.IntegerField()
     status_choices = [('En attente', 'En attente'),('Accepte', 'Accepte'),('Rejete', 'Rejete'),]
     status = models.CharField(max_length=20, choices=status_choices, default='En attente')
 

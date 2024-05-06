@@ -75,6 +75,8 @@ class Command(BaseCommand):
             Reservation.objects.create(
                 car=random.choice(cars),
                 client=random.choice(clients),
+                starting_date = fake.date_between(start_date='-1y', end_date='+1y'),
+                period = fake.random_int(min=1, max=30),
                 status=random.choice(['En attente', 'Accepte', 'Rejete']),
             )
 
