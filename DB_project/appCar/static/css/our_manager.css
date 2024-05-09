@@ -904,3 +904,21 @@ tbody td.active {
 	border-radius: 10%;
 	width: 80px;
 }
+
+.accepter {
+	background-color: #86e49d;
+	color: #006b21;
+	border: none;
+	padding: 5px;
+	border-radius: 10%;
+	width: 80px;
+}
+
+.refuser {
+	background-color: #d893a3;
+	color: #b30021;
+	border: none;
+	padding: 5px;
+	border-radius: 10%;
+	width: 80px;
+}

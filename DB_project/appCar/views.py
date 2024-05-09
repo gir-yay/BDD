@@ -349,3 +349,17 @@ def manager_info(request , cin):
     else:
         form = ManagerForm(instance=manager)
     return render(request, 'manager_info.html', {'form': form})
+
+#accepter reservation
+def accepter_reservation(request, id):
+    reservation = get_object_or_404(Reservation, pk=id)
+    reservation.status = 'Accepte'
+    reservation.save()
+    return redirect('our_reservations')
+
+#refuser reservation
+def refuser_reservation(request, id):
+    reservation = get_object_or_404(Reservation, pk=id)
+    reservation.status = 'Rejete'
+    reservation.save()
+    return redirect('our_reservations')

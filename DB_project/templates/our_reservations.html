@@ -201,10 +201,14 @@
 											<td>
 												{% if reservation.status == "En attente" %}
 												<a
-													href=""
-													class="btn btn-primary"
-													>Accrpter/refuser</a
+													href="{% url 'accepter_reservation' reservation.N_Serie %}"
+													class="accepter"
+													>Accepter</a
 												>
+												<a
+													href="{% url 'refuser_reservation' reservation.N_Serie %}"
+													class="refuser"
+													>Rejeter</a>
 												{% endif %}
 											</td>
 											<td>
