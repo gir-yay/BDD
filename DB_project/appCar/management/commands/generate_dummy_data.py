@@ -41,7 +41,7 @@ class Command(BaseCommand):
                 status=random.choice(['Disponible', 'Indisponible']),
                 fuel=random.choice(['Pétrole', 'Diesel', 'Eléctrique', 'Hybride']),
                 kilometer=fake.random_int(min=1000, max=8000),
-                seats=fake.random_int(min=2, max=7),
+                seats=fake.random_int(min=2, max=6),
                 air_conditioning=fake.boolean(),
                 child_seat=fake.boolean(),
                 gps=fake.boolean(),
