@@ -162,7 +162,7 @@
                                 <form action="{% url 'supprimer_client' client.cin %}" method="post" id="form-supprimer">
                                     {% csrf_token %}
                                     <!-- Vos autres champs de formulaire ici -->
-                                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?');">Supprimer</button>
+                                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?');" class="delete">Supprimer</button>
                                 </form>
                             </td>
                 </td>

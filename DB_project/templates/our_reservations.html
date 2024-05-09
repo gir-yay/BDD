@@ -218,6 +218,7 @@
 													<button
 														type="submit"
 														onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?');"
+														class="delete"
 													>
 														Supprimerr
 													</button>
@@ -232,7 +233,7 @@
 													id="telecharger"
 												>
 													{% csrf_token %}
-													<button type="submit">
+													<button type="submit" class="telecharger">
 														Télecharger
 													</button>
 												</form>

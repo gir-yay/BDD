@@ -886,3 +886,21 @@ thead th.active,
 tbody td.active {
 	color: #6c00bd;
 }
+
+.delete {
+	background-color: #ff0000;
+	color: #fff;
+	border: none;
+	padding: 5px;
+	border-radius: 10%;
+	width: 80px;
+}
+
+.telecharger {
+	background-color: #337dde;
+	color: #fff;
+	border: none;
+	padding: 5px;
+	border-radius: 10%;
+	width: 80px;
+}
