@@ -10,6 +10,8 @@
 
 #### python -m pip install pymongo==3.12.3
 
+#### python -m pip install xhtml2pdf pip --upgrade
+
 ==> local mongoDB
 ==> create DB called locationv_db
 ==> open cmd in the project folder
