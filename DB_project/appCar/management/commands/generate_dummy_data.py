@@ -17,20 +17,30 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Dummy data generated successfully'))
 
     def generate_cars(self):
-        brands = ['Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW']
-        img = ['car-1.jpg', 'car-2.jpg', 'car-3.jpg', 'car-4.jpg', 'car-5.jpg', 'car-6.jpg']
-        for _ in range(10):  # Generate 10 cars
-           
+        cars_list = [
+            {'brand': 'Marcedes', 'model': 'Benz', 'image': 'car-1.jpeg'},
+            {'brand': 'Marcedes', 'model': 'Amg', 'image': 'car-2.jpeg'},
+            {'brand': 'Peugeot', 'model': '108', 'image': 'car-3.jpg'},
+            {'brand': 'Citroen', 'model': 'C5 Aircross', 'image': 'car-4.jpeg'},
+            {'brand': 'Dacia', 'model': 'Sandero', 'image': 'car-5.jpeg'},
+            {'brand': 'Dacia', 'model': 'Logan', 'image': 'car-6.jpg'},
+            {'brand': 'Dacia', 'model': 'Duster', 'image': 'car-7.jpeg'},
+            {'brand': 'Renault', 'model': 'Kangoo', 'image': 'car-8.jpg'},
+            {'brand': 'Seat', 'model': 'Ibiza', 'image': 'car-9.jpeg'},
+            {'brand': 'Seat', 'model': 'Nuevo Alhambra', 'image': 'car-10.jpg'}
+        ]
+
+        for car_info in cars_list:  # Generate 10 cars
             Car.objects.create(
                 matricule=fake.random_int(min=10000, max=99999),
-                brand=random.choice(brands),
-                model=fake.word(),
+                brand=car_info['brand'],
+                model=car_info['model'],
                 year=fake.random_int(min=2000, max=2024),
-                price=fake.random_int(min=1000, max=8000),
-                image=random.choice(img),
+                price=fake.random_int(min=500, max=3000),
+                image=car_info['image'],
                 status=random.choice(['Disponible', 'Indisponible']),
                 fuel=random.choice(['Pétrole', 'Diesel', 'Eléctrique', 'Hybride']),
-                kilometer=fake.random_int(min=1000, max=100000),
+                kilometer=fake.random_int(min=1000, max=8000),
                 seats=fake.random_int(min=2, max=7),
                 air_conditioning=fake.boolean(),
                 child_seat=fake.boolean(),
@@ -45,6 +55,7 @@ class Command(BaseCommand):
                 climate_control=fake.boolean(),
                 description=fake.text(),
             )
+    
 
     def generate_clients(self):
         cin_ = ['EE123456', 'LC654321', 'BC987654', 'AC456789', 'MM321654']
