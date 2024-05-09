@@ -1,707 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vroum</title>
-		{% load static %}
-
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<!-- 
-    - google font link
-  -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-
-	<body>
-		<!-- 
-    - #HEADER
-  -->
-
-		<header class="header" data-header>
-			<div class="container">
-				<div class="overlay" data-overlay></div>
-
-				<a href="#" class="logo">
-					<span>Vroum</span>
-				</a>
-
-				<nav class="navbar" data-navbar>
-					<ul class="navbar-list">
-						<li>
-							<a href="#home" class="navbar-link" data-nav-link
-								>Home</a
-							>
-						</li>
-
-						<li>
-							<a
-								href="#featured-car"
-								class="navbar-link"
-								data-nav-link
-								>Voitures</a
-							>
-						</li>
-
-						<li>
-							<a href="#" class="navbar-link" data-nav-link
-								>A propos de nous</a
-							>
-						</li>
-
-						<li>
-							<a href="#blog" class="navbar-link" data-nav-link
-								>Blog</a
-							>
-						</li>
-					</ul>
-				</nav>
-
-				<div class="header-actions">
-					<div class="header-contact">
-						<a href="" class="contact-link">8 800 234 56 78</a>
-
-						<span class="contact-time"
-							>Lun - Sam: 9:00 am - 6:00 pm</span
-						>
-					</div>
-
-					<a
-						href="{% url 'login_view' %}"
-						class="btn"
-						aria-labelledby="aria-label-txt"
-					>
-						<ion-icon name="car-outline"></ion-icon>
-
-						<span id="aria-label-txt">S'authentifier</span>
-					</a>
-					
-				<button
-						class="nav-toggle-btn"
-						data-nav-toggle-btn
-						aria-label="Toggle Menu"
-					>
-						<span class="one"></span>
-						<span class="two"></span>
-						<span class="three"></span>
-					</button>
-				</div>
-			</div>
-		</header>
-
-		<main>
-			<article>
-				<!-- 
-        - #HERO
-      -->
-
-				<section class="section hero" id="home">
-					<div class="container">
-						<div class="hero-content">
-							<h2 class="h1 hero-title">
-								Louez une voiture maintenant et découvrez le monde !
-							</h2>
-
-							
-						</div>
-
-						<div class="hero-banner"></div>
-
-					</div>
-				</section>
-
-				<!-- 
-        - #FEATURED CAR
-      -->
-
-				<section class="section featured-car" id="featured-car">
-					<div class="container">
-						<div class="title-wrapper">
-							<h2 class="h2 section-title">Voitures en vedette</h2>
-
-							<a href="#" class="featured-car-link">
-								<span>Voir plus</span>
-
-								<ion-icon
-									name="arrow-forward-outline"
-								></ion-icon>
-							</a>
-						</div>
-
-						<ul class="featured-car-list">
-							
-						{% for car in cars %}
-							<li>
-								<div class="featured-car-card">
-									<figure class="card-banner">
-										<img
-											src="{{car.image.url}}"
-											alt="Toyota RAV4 2021"
-											loading="lazy"
-											width="440"
-											height="300"
-											class="w-100"
-										/>
-									</figure>
-
-									<div class="card-content">
-										<div class="card-title-wrapper">
-											<h3 class="h3 card-title">
-												<a href="#">{{car.brand}} - {{car.matricule}}</a>
-											</h3>
-
-											<data class="year" value="2021"
-												>{{car.year}}</data
-											>
-										</div>
-
-										<ul class="card-list">
-											<li class="card-list-item">
-												<ion-icon
-													name="people-outline"
-												></ion-icon>
-
-												<span class="card-item-text"
-													>{{car.seats}}</span
-												>
-											</li>
-
-											<li class="card-list-item">
-												<ion-icon
-													name="flash-outline"
-												></ion-icon>
-
-												<span class="card-item-text"
-													>{{car.fuel}}</span
-												>
-											</li>
-
-											<li class="card-list-item">
-												<ion-icon
-													name="speedometer-outline"
-												></ion-icon>
-
-												<span class="card-item-text"
-													>{{car.kilometer}}</span
-												>
-											</li>
-
-											<li class="card-list-item">
-												<ion-icon
-													name="hardware-chip-outline"
-												></ion-icon>
-
-												<span class="card-item-text"
-													>{{car.status}}</span
-												>
-											</li>
-										</ul>
-                                        <div class="card-price-wrapper">
-											<p class="card-price">
-												<strong>{{car.price}}</strong> / jour
-											</p>
-
-								
-												<ion-icon
-													name="heart-outline"
-												></ion-icon>
-											</button>
-
-											<button class="btn">
-												Louez Maintenant
-											</button>
-								
-							</li>
-							{% endfor %}
-							<!--<ul class="listPage"></ul>-->
-						</ul>
-					</div>
-				</section>
-
-				<!-- 
-        - #GET START
-      -->
-
-				<section class="section get-start">
-					<div class="container">
-						<h2 class="h2 section-title">
-						Commencez avec 4 étapes simples
-						</h2>
-
-						<ul class="get-start-list">
-							<li>
-								<div class="get-start-card">
-									<div class="card-icon icon-1">
-										<ion-icon
-											name="person-add-outline"
-										></ion-icon>
-									</div>
-
-									<h3 class="card-title">Créer un profile</h3>
-
-									<p class="card-text">
-										If you are going to use a passage of
-										Lorem Ipsum, you need to be sure.
-									</p>
-
-									<a href="#" class="card-link">Commencer</a>
-								</div>
-							</li>
-
-							<li>
-								<div class="get-start-card">
-									<div class="card-icon icon-2">
-										<ion-icon name="car-outline"></ion-icon>
-									</div>
-
-									<h3 class="card-title">
-										Dites-nous quel type de voiture vous souhaitez!
-									</h3>
-
-									<p class="card-text">
-										Various versions have evolved over the
-										years. One more line here , ok ok
-									</p>
-								</div>
-							</li>
-
-							<li>
-								<div class="get-start-card">
-									<div class="card-icon icon-3">
-										<ion-icon
-											name="person-outline"
-										></ion-icon>
-									</div>
-
-									<h3 class="card-title">
-										Choisissez la meilleure offre pour vous
-									</h3>
-
-									<p class="card-text">
-										It to make a type specimen book. It has
-										survived not only five centuries
-									</p>
-								</div>
-							</li>
-
-							<li>
-								<div class="get-start-card">
-									<div class="card-icon icon-4">
-										<ion-icon
-											name="card-outline"
-										></ion-icon>
-									</div>
-
-									<h3 class="card-title">Louer</h3>
-
-									<p class="card-text">
-										There are many variations of passages of
-										Lorem available, but the majority have
-										suffered alteration
-									</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</section>
-
-				<!-- 
-        - #BLOG
-      -->
-
-				<section class="section blog" id="blog">
-					<div class="container">
-						<h2 class="h2 section-title">Notre Blog</h2>
-
-						<ul class="blog-list has-scrollbar">
-							<li>
-								<div class="blog-card">
-									<figure class="card-banner">
-										<a href="#">
-											<img
-												src="{% static 'images/blog-1.jpg' %}"
-												alt="Opening of new offices of the company"
-												loading="lazy"
-												class="w-100"
-											/>
-										</a>
-
-										<a href="#" class="btn card-badge"
-											>Société</a
-										>
-									</figure>
-
-									<div class="card-content">
-										<h3 class="h3 card-title">
-											<a href="#">L'ouverture de nouveaux bureaux de l'entreprise</a>
-										</h3>
-
-										<div class="card-meta">
-											<div class="publish-date">
-												<ion-icon
-													name="time-outline"
-												></ion-icon>
-
-												<time datetime="2022-01-14"
-													>Janvier 14, 2022</time
-												>
-											</div>
-
-											<div class="comments">
-												<ion-icon
-													name="chatbubble-ellipses-outline"
-												></ion-icon>
-
-												<data value="114">114</data>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="blog-card">
-									<figure class="card-banner">
-										<a href="#">
-											<img
-												src="{% static 'images/blog-2.jpg' %}"
-												alt="What cars are most vulnerable"
-												loading="lazy"
-												class="w-100"
-											/>
-										</a>
-
-							<a href="#" class="btn card-badge">Réparation</a>
-									</figure>
-
-									<div class="card-content">
-										<h3 class="h3 card-title">
-											<a href="#"
-												>Les voitures les plus vulnérables</a
-											>
-										</h3>
-
-										<div class="card-meta">
-											<div class="publish-date">
-												<ion-icon
-													name="time-outline"
-												></ion-icon>
-
-												<time datetime="2022-01-14"
-													>January 14, 2022</time
-												>
-											</div>
-
-											<div class="comments">
-												<ion-icon
-													name="chatbubble-ellipses-outline"
-												></ion-icon>
-
-												<data value="114">114</data>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="blog-card">
-									<figure class="card-banner">
-										<a href="#">
-											<img
-												src="{% static 'images/blog-3.jpg' %}"
-												alt="Statistics showed which average age"
-												loading="lazy"
-												class="w-100"
-											/>
-										</a>
-
-										<a href="#" class="btn card-badge"
-											>Voitures</a
-										>
-									</figure>
-
-									<div class="card-content">
-										<h3 class="h3 card-title">
-							<a href="#">Les statistiques ont montré que l'âge moyen</a>
-										</h3>
-
-										<div class="card-meta">
-											<div class="publish-date">
-												<ion-icon
-													name="time-outline"
-												></ion-icon>
-
-												<time datetime="2022-01-14"
-													>Mai 11, 2024</time
-												>
-											</div>
-
-											<div class="comments">
-												<ion-icon
-													name="chatbubble-ellipses-outline"
-												></ion-icon>
-
-												<data value="114">114</data>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="blog-card">
-									<figure class="card-banner">
-										<a href="#">
-											<img
-												src="{% static 'images/blog-4.jpg' %}"
-												alt="What´s required when renting a car?"
-												loading="lazy"
-												class="w-100"
-											/>
-										</a>
-
-										<a href="#" class="btn card-badge"
-											>Voitures</a
-										>
-									</figure>
-
-									<div class="card-content">
-										<h3 class="h3 card-title">
-							<a href="#">Qu'est-ce qui est requis lors de la location d'une voiture ?</a>
-										</h3>
-
-										<div class="card-meta">
-											<div class="publish-date">
-												<ion-icon
-													name="time-outline"
-												></ion-icon>
-
-												<time datetime="2022-01-14"
-													>Janvier 14, 2022</time
-												>
-											</div>
-
-											<div class="comments">
-												<ion-icon
-													name="chatbubble-ellipses-outline"
-												></ion-icon>
-
-												<data value="114">114</data>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="blog-card">
-									<figure class="card-banner">
-										<a href="#">
-											<img
-												src="{% static 'images/blog-5.jpg' %}"
-												alt="New rules for handling our cars"
-												loading="lazy"
-												class="w-100"
-											/>
-										</a>
-
-										<a href="#" class="btn card-badge"
-											>Société</a
-										>
-									</figure>
-
-									<div class="card-content">
-										<h3 class="h3 card-title">
-							<a href="#">Nouvelles règles pour la gestion de nos voitures</a>
-										</h3>
-
-										<div class="card-meta">
-											<div class="publish-date">
-												<ion-icon
-													name="time-outline"
-												></ion-icon>
-
-												<time datetime="2022-01-14"
-													>Janvier 14, 2022</time
-												>
-											</div>
-
-											<div class="comments">
-												<ion-icon
-													name="chatbubble-ellipses-outline"
-												></ion-icon>
-
-												<data value="114">114</data>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</section>
-			</article>
-		</main>
-
-		<!-- 
-    - #FOOTER
-  -->
-
-		<footer class="footer">
-			<div class="container">
-				<div class="footer-top">
-					<div class="footer-brand">
-						<span>Vroum</span>
-						<p class="footer-text">
-							Recherchez des voitures de location bon marché au Maroc. Avec une flotte diversifiée de 19 000 véhicules, Waydex propose à ses clients une sélection attrayante et amusante.
-						</p>
-					</div>
-
-					<ul class="footer-list">
-						<li>
-							<p class="footer-list-title">Société</p>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">A propos de nous</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Plan de prix</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Notre blog</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Contacter</a>
-						</li>
-					</ul>
-
-					<ul class="footer-list">
-						<li>
-							<p class="footer-list-title">Support</p>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Centre d'aide</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Poser des questions</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Privacy policy</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link"
-								>Terms & conditions</a
-							>
-						</li>
-					</ul>
-
-					<ul class="footer-list">
-						<li>
-							<p class="footer-list-title">Services</p>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">CasaBlanca</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Nord du Morocco</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Rabat</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Marrakech</a>
-						</li>
-
-						<li>
-							<a href="#" class="footer-link">Meknes</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="footer-bottom">
-					<ul class="social-list">
-						<li>
-							<a href="#" class="social-link">
-								<ion-icon name="logo-facebook"></ion-icon>
-							</a>
-						</li>
-
-						<li>
-							<a href="#" class="social-link">
-								<ion-icon name="logo-instagram"></ion-icon>
-							</a>
-						</li>
-
-						<li>
-							<a href="#" class="social-link">
-								<ion-icon name="logo-twitter"></ion-icon>
-							</a>
-						</li>
-
-						<li>
-							<a href="#" class="social-link">
-								<ion-icon name="logo-linkedin"></ion-icon>
-							</a>
-						</li>
-
-						<li>
-							<a href="#" class="social-link">
-								<ion-icon name="logo-skype"></ion-icon>
-							</a>
-						</li>
-
-						<li>
-							<a href="#" class="social-link">
-								<ion-icon name="mail-outline"></ion-icon>
-							</a>
-						</li>
-					</ul>
-
-					<p class="copyright">
-						&copy; 2024 <a href="#">Vroum</a>. All Rights Reserved
-					</p>
-				</div>
-			</div>
-		</footer>
-
-		<!-- 
-    - custom js link
-  -->
-		<script src="{% static 'js/script.js' %}"></script>
-
-		<!-- 
-    - ionicon link
-  -->
-		<script
-			type="module"
-			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-		></script>
-		<script
-			nomodule
-			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-		></script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+	{% load static %}
+
+   
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Vroum</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="" class="nav__logo">
+                Vroum
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link ">A propos de nous</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#popular" class="nav__link">Voitures</a>
+                    </li>
+                     <li class="nav__item">
+                        <a class="nav__link" href="{% url 'login_view' %}">S'authentifier</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+           
+        </nav>
+    </header>
+
+<main>
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__group">
+                    <img src="{% static 'images/about.jpeg' %}" alt="" class="about__img">
+
+                    <div class="about__card">
+                        <h3 class="about__card-title">Nouveau</h3>
+                        <p class="about__card-description">Louez les meilleures voitures</p>
+                    </div>
+                </div>
+
+                <div class="about__data">
+                    <h2 class="section__title about__title">Voiture avec <br> une téchnologie future</h2>
+                    <p class="about__description">
+                        LOUEZ UNE VOITURE MAINTENANT ET DÉCOUVREZ LE MONDE !
+                    </p>
+
+                    <a href="#" class="button">Louez Maintenent!</a>
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+    
+
+        <!--==================== FEATURED ====================-->
+        <section class="featured section" id="featured">
+            <h2 class="section__title">Voitures</h2>
+            <div class="featured__container container">
+                
+                <div class="featured__content grid">
+                    {% for car in cars %}
+                     <article class="featured__card mix tesla">
+                        <div class="shape shape__smaller"></div>
+
+                        <h1 class="featured__title">{{car.brand}}</h1>
+                        <h3 class="featured__subtitle">{{car.year}}</h3>
+                        <br>
+                        <img src="{{car.image.url}}" alt="">
+                        <br>
+                        <div class="popular__data" style="margin-top: 20px;">
+                            <div class="popular__data-group">
+                                <i class="ri-dashboard-2-line"> {{car.kilometer}} Km</i> 
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-exchange-funds-line"> {{car.status}}</i> 
+                            </div>
+                            <div class="popular__data-group">
+                                <i class="ri-charging-pile-2-line"> {{car.fuel}}</i> 
+                            </div>
+                        </div>
+                        <h3 class="featured__price">{{car.price}} MAD/jour </h3><br>
+                        <button class="button featured__button" type="button">Louez!</button>
+                           
+                        </button>
+
+                    </article>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+
+        </section>
+       
+
+        <!--==================== OFFER ====================-->
+        <section class="offer section">
+
+            <div class="offer__container container grid">
+
+                <img src="{% static 'images/offer-bg.png' %}" alt="" class="offer__bg">
+
+                <div class="offer__data">
+
+                    <p class="offer__description">
+Recherchez des voitures de location bon marché au Maroc. Avec une flotte diversifiée de 19 000 véhicules, Waydex propose à ses clients une sélection attrayante et amusante.
+                    </p>
+
+                    <a href="#" class="button">Louez Maintenent!</a>
+                </div>
+
+                <img src="{% static 'images/offer.png' %}" alt="" class="offer__img">
+
+            </div>
+
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="shapeX shape__big"></div>
+        <div class="shapeX shape__small"></div>
+
+        <div class="footer__container container grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">
+                    Vroum
+                </a>
+                <p class="footer__description">
+                   On offre les meilleures voitures de location!</br>
+                   Louez une voiture maintenant et découvrez le monde!
+                </p>
+            </div>
+
+
+            <div class="footer__content">
+
+                <h3 class="footer__title">Societé </h3>
+
+                <ul class="footer__links">
+                    <li>
+                       A propos
+                    </li>
+                    <li>
+                        Voitures
+                    </li>
+                    <li>
+                       Location
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information </h3>
+                <ul class="footer__links">
+                   
+                    <li>
+                        Trouver une voiture
+                    </li>
+                    <li>
+                       Contactez Nous
+                    </li>
+                    <li>
+                       Services
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title"> Abonnez Vous </h3>
+
+                <ul class="footer__social">
+                    <a href="" target="_blank" class="footer__social-link">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="" target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="" target="_blank" class="footer__social-link">
+                        <i class="ri-twitter-line"></i>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <span class="footer__copy" style="color: white;">
+            &#169; Vroum, All rigths reserved
+            <p id="date"></p>
+        </span>
+    </footer>
+
+
+   
+
+
+</body>
+
+
+
 </html>
