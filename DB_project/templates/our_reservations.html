@@ -231,16 +231,11 @@
 											<td>
 											
 													{% if reservation.status == "Accepte" %}
-												<form
-													action=""
-													method="post"
-													id="telecharger"
-												>
-													{% csrf_token %}
+												<a href="{% url 'facture' reservation.N_Serie %}">
 													<button type="submit" class="telecharger">
 														Télecharger
 													</button>
-												</form>
+												</a>
 												{% endif %}
 												
 											</td>

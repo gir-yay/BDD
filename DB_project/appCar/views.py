@@ -18,6 +18,20 @@ from django.contrib.auth import logout
 from pymongo import MongoClient
 from .forms import AdminForm
 from .forms import ClientForm
+from django.template.loader import get_template
+from io import BytesIO
+from django.http import HttpResponse
+from xhtml2pdf import pisa
+
+def render_to_pdf(template_src, context_dict={}):
+    template = get_template(template_src)
+    html  = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if pdf.err:
+        return HttpResponse("Invalid PDF", status_code=400, content_type='text/plain')
+    return HttpResponse(result.getvalue(), content_type='application/pdf')
+
 
 # Configuration de la connexion à MongoDB
 client = MongoClient('localhost', 27017)
@@ -363,3 +377,17 @@ def refuser_reservation(request, id):
     reservation.status = 'Rejete'
     reservation.save()
     return redirect('our_reservations')
+
+
+#facture
+def facture(request, id):
+    reservation = get_object_or_404(Reservation, pk=id)
+    # make a join between reservation , car and client
+    reservation = Reservation.objects.filter(N_Serie=id).select_related('car', 'client').first()
+    subtotal = reservation.car.price 
+    subtotal = subtotal.to_decimal()
+    subtotal = subtotal * reservation.period
+    total = subtotal + 150
+    #generate a pdf
+    return render_to_pdf('facture.html', {'reservation': reservation , 'subtotal': subtotal , 'total': total })
+    
