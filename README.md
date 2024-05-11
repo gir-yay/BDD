@@ -8,15 +8,17 @@
 // using cmd
 #### env\Scripts\activate.bat   
 
-#### pip install -r requirements.txt
+#### (env) pip install -r requirements.txt
 
 // database
-#### python manage.py makemigrations appCar
+#### (env) python manage.py makemigrations appCar
 
-#### python manage.py migrate
+#### (env) python manage.py migrate
 //dummy data
-#### python manage.py generate_dummy_data
+#### (env) python manage.py generate_dummy_data
 
 //serve the pages
 
-#### python manage.py runserver 9000 // or any other available port
+#### (env) python manage.py runserver 9000 // or any other available port
+
+[!note "NB: Do not add (env) to the commands"]
