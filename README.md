@@ -6,9 +6,7 @@
 
 #### activate the virtual environment
 // using cmd
-#### env/Scripts/activate.bat   
-// using powershell
-#### env/Scripts/activate.ps1
+#### env\Scripts\activate.bat   
 
 #### pip install -r requirements.txt
 
