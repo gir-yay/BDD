@@ -11,7 +11,7 @@
   /*Color mode HSL(hue, saturation, lightness)*/
   --first-color: hsl(213, 79%, 39%);
   --first-color-alt: hsl(219, 69%, 52%);
-  --title-color: hsl(219, 8%, 95%);
+  --title-color: hsl(0, 0%, 100%);
   --text-color: hsl(219, 8%, 75%);
   --text-color-light: hsl(219, 4%, 55%);
   --white-color: #fff;

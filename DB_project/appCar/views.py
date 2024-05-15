@@ -1,6 +1,7 @@
 
+import datetime
 from django.shortcuts import render, redirect
-from .forms import VoitureForm
+from .forms import ReservationForm, VoitureForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Manager
@@ -21,7 +22,8 @@ from .forms import ClientForm
 from django.template.loader import get_template
 from io import BytesIO
 from django.http import HttpResponse
-from xhtml2pdf import pisa
+from xhtml2pdf import pisa 
+
 
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
@@ -391,3 +393,21 @@ def facture(request, id):
     #generate a pdf
     return render_to_pdf('facture.html', {'reservation': reservation , 'subtotal': subtotal , 'total': total })
     
+#===================================================================================================
+#ajouter une reservation 
+def ajouter_reservation(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form.instance.car_id = request.POST.get('car_id')
+            form.instance.status = 'En attente'
+            form.save()
+            messages.success(request, 'Réservation ajoutée avec succès.')
+            return redirect('our_resrvations')
+        else:
+            messages.error(request, 'Veuillez corriger les erreurs ci-dessous.')
+        
+    else:
+        form = ReservationForm()
+        messages.error(request, 'Mochkiiila')
+    return render(request, 'our_cars.html', {'form': form})

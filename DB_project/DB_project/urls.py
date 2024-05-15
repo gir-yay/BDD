@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view,logout_view,our_clients,our_cars,our_reservations, ajouter_admin , view_car,modifier_client,supprimer_client,ajouter_client,supprimer_car,modifier_car,supprimer_reservation,admin_info,manager_info,accepter_reservation,refuser_reservation,facture
+from appCar.views import home, ajouter_voiture,dashboard,our_managers,our_admins,modifier_manager,supprimer_manager,ajouter_manager,dashboard_manager,login_view,logout_view,our_clients,our_cars,our_reservations, ajouter_admin , view_car,modifier_client,supprimer_client,ajouter_client,supprimer_car,modifier_car,supprimer_reservation,admin_info,manager_info,accepter_reservation,refuser_reservation,ajouter_reservation,facture
 
 
 
@@ -60,6 +60,9 @@ urlpatterns = [
     path('accepter-reservation/<int:id>/', accepter_reservation, name='accepter_reservation'),
     #refuser reservation
     path('refuser-reservation/<int:id>/', refuser_reservation, name='refuser_reservation'),
+    #ajouter reservation
+    path('ajouter-reservation/', ajouter_reservation, name='ajouter_reservation'),
+   
     #facture
     path('facture/<int:id>/' , facture , name='facture' ),
 
