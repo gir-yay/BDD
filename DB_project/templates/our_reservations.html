@@ -157,7 +157,19 @@
 												>
 											</th>
 											<th>
-												date
+												date de reservation
+												<span class="icon-arrow"
+													>&UpArrow;</span
+												>
+											</th>
+											<th>
+												date début
+												<span class="icon-arrow"
+													>&UpArrow;</span
+												>
+											</th>
+											<th>
+												duree
 												<span class="icon-arrow"
 													>&UpArrow;</span
 												>
@@ -196,6 +208,12 @@
 											<td>{{ reservation.car_id }}</td>
 											<td>
 												{{reservation.reservation_date}}
+											</td>
+											<td>
+												{{reservation.starting_date}}
+											</td>
+											<td>
+												{{reservation.period}}
 											</td>
 											<td>{{ reservation.status}}</td>
 											<td>
