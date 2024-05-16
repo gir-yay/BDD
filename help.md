@@ -15,8 +15,7 @@
 #### pip install faker
 
 #### python -m pip install xhtml2pdf pip --upgrade
-#### pip install django-background-tasks pymongo
-
+#### pip install celery[redis]
 ==> local mongoDB
 ==> create DB called locationv_db
 ==> open cmd in the project folder
