@@ -285,11 +285,11 @@
 							  </button>
 							</div>
 							<div class="modal-body">
-								<form method="POST"  id="form" enctype="multipart/form-data">
+								<form method="POST"  id="form" action="{% url 'ajouter_reservation' %}" enctype="multipart/form-data">
 									{% csrf_token %}
 									<div class="form-group">
 										<input type="hidden"  name="status" value="En attente">
-										<input type="hidden"  name="car_id" value="{{ car_id }}">
+										<input type="hidden" id="car_id" name="car_id" value="{{ car_id }}">
 										<input type="hidden" id="reservation_date" name="reservation_date">
 										<label for="client_id">CIN du client :</label>
 										<input type="text" class="form-control" id="client_id" name="client_id" required>
@@ -330,6 +330,14 @@
 			nomodule
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
 		></script>
+		<script>
+			$(document).ready(function() {
+				$('.btn-reserver').click(function() {
+					var carId = $(this).data('car-id');
+					$('#car_id').val(carId);
+				});
+			});
+		</script>
 		
 
 
@@ -337,7 +345,7 @@
 
 	<script src="{% static 'js/adminJS.js' %}"></script>
     <script src="{% static 'js/tableJS.js' %}"></script>
-	<script>
+	<script> 
 		document.getElementById('form').addEventListener('submit', function() {
 			document.getElementById('reservation_date').value = new Date().toISOString().slice(0, 10);
 		});

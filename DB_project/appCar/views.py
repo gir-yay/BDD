@@ -1,5 +1,5 @@
 
-import datetime
+from datetime import datetime
 from django.shortcuts import render, redirect
 from .forms import ReservationForm, VoitureForm
 from django.contrib.auth import authenticate, login
@@ -397,15 +397,17 @@ def facture(request, id):
 #ajouter une reservation 
 def ajouter_reservation(request):
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            form.instance.car_id = request.POST.get('car_id')
-            form.save()
-            messages.success(request, 'Réservation ajoutée avec succès.')
-            return redirect('our_cars')
-        else:
-            messages.error(request, 'Veuillez corriger les erreurs ci-dessous.')
-        
-    else:
-        form = ReservationForm()
-    return render(request, 'our_cars.html', {'form': form})
+        client_id = request.POST.get('client_id')
+        starting_date = request.POST.get('starting_date')
+        period = int(request.POST.get('period'))
+        car_id = request.POST.get('car_id')
+        status = request.POST.get('status')
+        reservation_date = datetime.now()
+
+        # Save reservation to the database
+        reservation = Reservation(client_id=client_id, starting_date=starting_date, period=period, car_id=car_id, status=status, reservation_date=reservation_date)
+        reservation.save()
+
+        return redirect('our_reservations')  # Redirect to reservations page
+
+    return render(request, 'our_cars.html')
