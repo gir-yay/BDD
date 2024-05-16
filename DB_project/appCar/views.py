@@ -400,14 +400,12 @@ def ajouter_reservation(request):
         form = ReservationForm(request.POST)
         if form.is_valid():
             form.instance.car_id = request.POST.get('car_id')
-            form.instance.status = 'En attente'
             form.save()
             messages.success(request, 'Réservation ajoutée avec succès.')
-            return redirect('our_resrvations')
+            return redirect('our_cars')
         else:
             messages.error(request, 'Veuillez corriger les erreurs ci-dessous.')
         
     else:
         form = ReservationForm()
-        messages.error(request, 'Mochkiiila')
     return render(request, 'our_cars.html', {'form': form})

@@ -61,7 +61,7 @@ urlpatterns = [
     #refuser reservation
     path('refuser-reservation/<int:id>/', refuser_reservation, name='refuser_reservation'),
     #ajouter reservation
-    path('ajouter-reservation/', ajouter_reservation, name='ajouter_reservation'),
+    path('our_cars/', ajouter_reservation, name='our_cars'),
    
     #facture
     path('facture/<int:id>/' , facture , name='facture' ),

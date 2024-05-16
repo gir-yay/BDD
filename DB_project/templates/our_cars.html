@@ -95,7 +95,7 @@
 					<i class='bx bxs-log-out-circle' ></i>
 					<form action="{% url 'logout' %}" method="Post">
 						{% csrf_token %}
-                     <button class="logout-btn">se déconnecter</button>
+                     <button class="logout-btn"> Se déconnecter</button>
                     </form>
 				</a>
             
@@ -252,7 +252,11 @@
 											
 											 
 
+<<<<<<< Updated upstream
 											<button class="btn btn-success" >
+=======
+											<button class="btn" style="width: 80px; color: black;">
+>>>>>>> Stashed changes
 												<a href="{% url 'view_car' car.matricule %}">Visualiser</a>
 											</button>
 
@@ -287,8 +291,9 @@
 								<form method="POST"  id="form" enctype="multipart/form-data">
 									{% csrf_token %}
 									<div class="form-group">
-										
+										<input type="hidden"  name="status" value="En attente">
 										<input type="hidden"  name="car_id" value="{{ car_id }}">
+										<input type="hidden" id="reservation_date" name="reservation_date">
 										<label for="client_id">CIN du client :</label>
 										<input type="text" class="form-control" id="client_id" name="client_id" required>
 									</div>
@@ -335,6 +340,12 @@
 
 	<script src="{% static 'js/adminJS.js' %}"></script>
     <script src="{% static 'js/tableJS.js' %}"></script>
+	<script>
+		document.getElementById('form').addEventListener('submit', function() {
+			document.getElementById('reservation_date').value = new Date().toISOString().slice(0, 10);
+		});
+	</script>
+	
 	
 </body>
 </html>
