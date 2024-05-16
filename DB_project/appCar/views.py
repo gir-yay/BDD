@@ -23,6 +23,7 @@ from django.template.loader import get_template
 from io import BytesIO
 from django.http import HttpResponse
 from xhtml2pdf import pisa 
+from datetime import datetime, timedelta
 
 
 def render_to_pdf(template_src, context_dict={}):
@@ -397,8 +398,9 @@ def facture(request, id):
 #ajouter une reservation 
 def ajouter_reservation(request):
     if request.method == 'POST':
+        tomorrow = datetime.now() + timedelta(days=1)
         client_id = request.POST.get('client_id')
-        starting_date = request.POST.get('starting_date')
+        starting_date = tomorrow
         period = int(request.POST.get('period'))
         car_id = request.POST.get('car_id')
         status = request.POST.get('status')
