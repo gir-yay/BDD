@@ -15,7 +15,7 @@
 #### pip install faker
 
 #### python -m pip install xhtml2pdf pip --upgrade
-
+#### pip install django-background-tasks pymongo
 
 ==> local mongoDB
 ==> create DB called locationv_db
