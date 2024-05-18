@@ -22,7 +22,8 @@
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
-			<span class="text" style="margin-left: 20px;">Vroum</span>
+			<img src="{% static 'images/logo_vroum.png' %}" alt=""  style="height: 40px; width: 50px;  margin-left: 5px;">
+			<span class="text" style=" margin-top: 4px; color: rgb(33, 79, 97);">roum</span>
 		</a>
 		<ul class="side-menu top">
 			<li >
@@ -64,7 +65,7 @@
 					<i class='bx bxs-log-out-circle' ></i>
 					<form action="{% url 'logout' %}" method="Post">
 						{% csrf_token %}
-                     <button class="logout-btn">se déconnecter</button>
+                     <button class="logout-btn">Se déconnecter</button>
                     </form>
 				</a>
             

@@ -160,11 +160,12 @@ body {
 }
 
 .logout-btn {
-	background-color: #fff;
+	background-color: #ddd0d0;
 	color: #060714;
 	border: none;
 	cursor: pointer;
 }
+
 
 #sidebar .side-menu.top li a:hover {
 	color: var(--blue);

@@ -48,16 +48,17 @@ table.invoice td {
 
 .additional-info h5 {
     font-weight: 700;
+    font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #1779ba;
+    color: #093b5c;
 }
 .additional-info p{
     font-size: 14px;
 }
 
 span {
-    color: #1779ba;
+    color: #093655;
     font-size: 14px;
 }
 
@@ -71,7 +72,7 @@ li{
         <table class="invoice" >
           <tr class="header">
             <td class="">
-              <p style="font-size: 18px;">Vroom</p>
+              <p style="font-size: 24px; color: rgb(33, 79, 97); font-weight: bold;">Vroom</p>
             </td>
             <td class="align-right">
               <h2>Facture</h2>
@@ -129,30 +130,30 @@ li{
             <td>
               <table>
                 <tr class="subtotal">
-                  <td class="num">Subtotal en MAD</td>
+                  <td class="num">Subtotal en MAD :</td>
                   <td class="num">{{subtotal}}</td>
                 </tr>
                 <tr class="tax">
-                  <td class="num">Assurance en MAD</td>
-                  <td class="num">150</td>
+                  <td class="num">Assurance en MAD : </td>
+                  <td class="num"> 150</td>
                 </tr>
                 <tr class="total">
-                  <td>Total en MAD</td>
+                  <td>Total en MAD : </td>
                   <td>{{total}}</td>
                 </tr>
               </table>
             </td>
           </tr>
-        </table>
+        </table><br><br>
         <section class="additional-info">
         <div class="row">
           <div class="columns">
-            <h5>Information de la reservation</h5>
-            <p><span>Date de debut de location:</span> {{ reservation.starting_date }}</p>
+            <h5>Information de la reservation  :</h5>
+            <p><span>Date de debut de location :</span> {{ reservation.starting_date }}</p>
             <p><span>Duree de la location:</span> {{ reservation.period }} jours</p>
           </div>
           <div class="columns">
-            <p><span>Kilometrage: </span>{{ reservation.car.kilometer }}</p>
+            <p><span>Kilometrage : </span>{{ reservation.car.kilometer }} Km</p>
             <p>{{car.description}}</p>
 			<ul>
 			{% if reservation.car.air_conditioning %}
