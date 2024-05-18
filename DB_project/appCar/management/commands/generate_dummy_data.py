@@ -35,8 +35,8 @@ class Command(BaseCommand):
                 matricule=fake.random_int(min=10000, max=99999),
                 brand=car_info['brand'],
                 model=car_info['model'],
-                year=fake.random_int(min=2000, max=2024),
-                price=fake.random_int(min=500, max=3000),
+                year=fake.random_int(min=2021, max=2023),
+                price=fake.random_int(min=500, max=1000),
                 image=car_info['image'],
                 status=random.choice(['Disponible', 'Indisponible']),
                 fuel=random.choice(['Pétrole', 'Diesel', 'Eléctrique', 'Hybride']),
@@ -87,7 +87,7 @@ class Command(BaseCommand):
                 car=random.choice(cars),
                 client=random.choice(clients),
                 starting_date = fake.date_between(start_date='-1y', end_date='+1y'),
-                period = fake.random_int(min=1, max=30),
+                period = fake.random_int(min=1, max=7),
                 status=random.choice(['En attente', 'Accepte', 'Rejete']),
             )
 
