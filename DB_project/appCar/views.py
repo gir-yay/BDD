@@ -189,6 +189,29 @@ def modifier_manager(request, manager_cin):
         form = ManagerForm(instance=manager)
     return render(request, 'modifier_manager.html', {'form': form})
 
+"""
+def modifier_manager(request, manager_cin):
+    manager = manager.find_one({"_id": ObjectId(manager_cin)})
+    if not manager:
+        return redirect('our_managers')  # Rediriger si le manager n'existe pas
+
+    if request.method == 'POST':
+        form = ManagerForm(request.POST, initial=manager)
+        if form.is_valid():
+            updated_data = form.cleaned_data
+            # Exclure l'identifiant de l'objet des données mises à jour
+            updated_data.pop('id', None)
+            managers_collection.update_one({"_id": ObjectId(manager_cin)}, {"$set": updated_data})
+            print("Form saved successfully")
+            return redirect('our_managers')  # Rediriger vers le tableau de bord après modification
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:
+        form = ManagerForm(initial=manager)
+
+    return render(request, 'modifier_manager.html', {'form': form})
+"""
 
 
 #client modification
