@@ -27,4 +27,3 @@ def update_car_unavailability():
 #celery -A DB_project beat -l INFO
 #worker is not needed
 #####celery -A DB_project worker -l INFO
-#celery -A DB_project beat -l info & python manage.py runserver
