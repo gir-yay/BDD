@@ -24,5 +24,6 @@ def update_car_unavailability():
             Car.objects.filter(matricule=reservation.car.matricule).update(status='Indisponible')
             
 #commmands to run
-#celery -A DB_project beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
-#celery -A DB_project worker -l INFO
+#celery -A DB_project beat -l INFO
+#worker is not needed
+#####celery -A DB_project worker -l INFO
