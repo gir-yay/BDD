@@ -261,22 +261,6 @@ def modifier_car(request, matricule):
         form = VoitureForm(instance=car)
     return render(request, 'modifier_car.html', {'form': form})
 
-#ajouter voiture
-
-def ajouter_voiture(request):
-    if request.method == 'POST':
-        form = VoitureForm(request.POST , request.FILES )
-        if form.is_valid():
-            form.save()
-            return redirect('our_cars')  # Rediriger vers la page d'accueil après l'ajout
-        
-        else:
-            # Add debug print statements to check form errors
-            print("Form errors:", form.errors)
-    else:        
-        form = VoitureForm()
-    return render(request, 'ajouter_voiture.html', {'form': form})
-
 
 #===================================================================================================================================
 
@@ -370,6 +354,41 @@ def ajouter_client(request):
         form = ClientForm()
     return render(request, 'ajouter_client.html', {'form': form})
 
+#ajouter voiture
+
+def ajouter_voiture(request):
+    if request.method == 'POST':
+        form = VoitureForm(request.POST , request.FILES )
+        if form.is_valid():
+            form.save()
+            return redirect('our_cars')  # Rediriger vers la page d'accueil après l'ajout
+        
+        else:
+            # Add debug print statements to check form errors
+            print("Form errors:", form.errors)
+    else:        
+        form = VoitureForm()
+    return render(request, 'ajouter_voiture.html', {'form': form})
+
+#ajouter une reservation 
+def ajouter_reservation(request):
+    if request.method == 'POST':
+        #tomorrow = datetime.now() + timedelta(days=1)
+        client_id = request.POST.get('client_id')
+        #starting_date = tomorrow
+        starting_date = request.POST.get('starting_date')
+        period = int(request.POST.get('period'))
+        car_id = request.POST.get('car_id')
+        status = request.POST.get('status')
+        reservation_date = datetime.now()
+
+        # Save reservation to the database
+        reservation = Reservation(client_id=client_id, starting_date=starting_date, period=period, car_id=car_id, status=status, reservation_date=reservation_date)
+        reservation.save()
+
+        return redirect('our_reservations')  # Redirect to reservations page
+
+    return render(request, 'our_cars.html')
 
 ###############################################################
 #info admin
@@ -438,22 +457,4 @@ def facture(request, id):
     return render_to_pdf('facture.html', {'reservation': reservation , 'subtotal': subtotal , 'total': total })
     
 #===================================================================================================
-#ajouter une reservation 
-def ajouter_reservation(request):
-    if request.method == 'POST':
-        #tomorrow = datetime.now() + timedelta(days=1)
-        client_id = request.POST.get('client_id')
-        #starting_date = tomorrow
-        starting_date = request.POST.get('starting_date')
-        period = int(request.POST.get('period'))
-        car_id = request.POST.get('car_id')
-        status = request.POST.get('status')
-        reservation_date = datetime.now()
-
-        # Save reservation to the database
-        reservation = Reservation(client_id=client_id, starting_date=starting_date, period=period, car_id=car_id, status=status, reservation_date=reservation_date)
-        reservation.save()
-
-        return redirect('our_reservations')  # Redirect to reservations page
-
-    return render(request, 'our_cars.html')
+#schedule
