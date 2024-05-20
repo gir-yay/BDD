@@ -24,6 +24,8 @@ from io import BytesIO
 from django.http import HttpResponse
 from xhtml2pdf import pisa 
 from datetime import datetime, timedelta
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
+from .tasks import update_car_availability, update_car_unavailability
 
 
 def render_to_pdf(template_src, context_dict={}):
@@ -161,6 +163,8 @@ def our_clients(request):
 
 
 def our_cars(request):
+    update_car_availability()
+    update_car_unavailability()
     cars = Car.objects.all()
     return render(request, 'our_cars.html', {'cars': cars})
 
@@ -458,3 +462,25 @@ def facture(request, id):
     
 #===================================================================================================
 #schedule
+def schedule_task(request):
+    interval, _ = IntervalSchedule.objects.get_or_create(
+        every=120,
+        period=IntervalSchedule.SECONDS,
+    )
+
+    PeriodicTask.objects.create(
+        interval=interval,
+        name="update-car-availability",
+        task="appCar.tasks.update_car_availability",
+        #args=json.dumps(["Arg1", "Arg2"])
+        #one_off=True
+    )
+    PeriodicTask.objects.create(
+        interval=interval,
+        name="update-car-unavailability",
+        task="appCar.tasks.update_car_unavailability",
+        #args=json.dumps(["Arg1", "Arg2"])
+        #one_off=True
+    )
+
+    return HttpResponse("Tasks scheduled!")

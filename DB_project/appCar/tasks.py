@@ -9,20 +9,20 @@ def update_car_availability():
     for reservation in accepted_reservations:
         end_date = reservation.starting_date + timedelta(days=reservation.period)
         if end_date == today:
-            car = reservation.car
-            car.status = 'Disponible'  
-            car.save()
+            # Update car status directly using update
+            Car.objects.filter(matricule=reservation.car.matricule).update(status='Disponible')
+
             
+
 @shared_task
 def update_car_unavailability():
     today = datetime.now().date()
     accepted_reservations = Reservation.objects.filter(status='Accepte')  # Filter accepted reservations
     for reservation in accepted_reservations:
+        # Update car status directly using update
         if reservation.starting_date == today:
-            car = reservation.car
-            car.status = 'Indisponible'  
-            car.save()
+            Car.objects.filter(matricule=reservation.car.matricule).update(status='Indisponible')
             
 #commmands to run
-#celery -A DB_project beat -l INFO
+#celery -A DB_project beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
 #celery -A DB_project worker -l INFO
