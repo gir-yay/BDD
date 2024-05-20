@@ -169,7 +169,21 @@ def our_cars(request):
 
 def our_reservations(request):
     reservations = Reservation.objects.all()
-    return render(request, 'our_reservations.html', {'reservations': reservations})
+    reservation_list = []
+    for reservation in reservations:
+        end_date = reservation.starting_date + timedelta(days=reservation.period)
+        reservation_list.append({
+            'N_Serie': reservation.N_Serie,
+            'client_id': reservation.client_id,
+            'car_id': reservation.car_id,
+            'reservation_date': reservation.reservation_date,
+            'starting_date': reservation.starting_date,
+            'period': reservation.period,
+            'end_date': end_date,
+            'status': reservation.status
+        })
+    context = {'reservations': reservation_list}
+    return render(request, 'our_reservations.html', context)
 
 #===================================================================================================================================
 #modifier un manager
@@ -191,7 +205,7 @@ def modifier_manager(request, manager_cin):
 
 """
 def modifier_manager(request, manager_cin):
-    manager = manager.find_one({"_id": ObjectId(manager_cin)})
+    manager = manager.find_one({"cin": manager_cin})
     if not manager:
         return redirect('our_managers')  # Rediriger si le manager n'existe pas
 
@@ -201,7 +215,7 @@ def modifier_manager(request, manager_cin):
             updated_data = form.cleaned_data
             # Exclure l'identifiant de l'objet des données mises à jour
             updated_data.pop('id', None)
-            managers_collection.update_one({"_id": ObjectId(manager_cin)}, {"$set": updated_data})
+            managers_collection.update_one({"cin": manager_cin}, {"$set": updated_data})
             print("Form saved successfully")
             return redirect('our_managers')  # Rediriger vers le tableau de bord après modification
         else:
@@ -395,6 +409,12 @@ def accepter_reservation(request, id):
     reservation = get_object_or_404(Reservation, pk=id)
     reservation.status = 'Accepte'
     reservation.save()
+
+    '''
+    car = get_object_or_404(Car, pk=reservation.car_id)
+    car.status = 'Indisponible'
+    car.save()
+    '''
     return redirect('our_reservations')
 
 #refuser reservation
@@ -421,9 +441,10 @@ def facture(request, id):
 #ajouter une reservation 
 def ajouter_reservation(request):
     if request.method == 'POST':
-        tomorrow = datetime.now() + timedelta(days=1)
+        #tomorrow = datetime.now() + timedelta(days=1)
         client_id = request.POST.get('client_id')
-        starting_date = tomorrow
+        #starting_date = tomorrow
+        starting_date = request.POST.get('starting_date')
         period = int(request.POST.get('period'))
         car_id = request.POST.get('car_id')
         status = request.POST.get('status')

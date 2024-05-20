@@ -140,12 +140,12 @@
 								<table>
 									<thead>
 										<tr>
-											<th>
+											<!--<th>
 												Id
 												<span class="icon-arrow"
 													>&UpArrow;</span
 												>
-											</th>
+											</th>-->
 											<th>
 												Client
 												<span class="icon-arrow"
@@ -171,6 +171,12 @@
 											</th>
 											<th>
 												duree
+												<span class="icon-arrow"
+													>&UpArrow;</span
+												>
+											</th>
+											<th>
+												date fin
 												<span class="icon-arrow"
 													>&UpArrow;</span
 												>
@@ -204,7 +210,7 @@
 									<tbody>
 										{% for reservation in reservations %}
 										<tr>
-											<td>{{ reservation.N_Serie }}</td>
+											<!--<td>{{ reservation.N_Serie }}</td>-->
 											<td>{{ reservation.client_id }}</td>
 											<td>{{ reservation.car_id }}</td>
 											<td>
@@ -215,6 +221,9 @@
 											</td>
 											<td>
 												{{reservation.period}}
+											</td>
+											<td>
+												{{reservation.end_date}}
 											</td>
 											<td>{{ reservation.status}}</td>
 											<td>

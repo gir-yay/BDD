@@ -22,5 +22,9 @@ app.conf.beat_schedule = {
         'task': 'appCar.tasks.update_car_availability',
         'schedule': crontab(hour=0, minute=0),  # Run daily at midnight
     },
+    'update-car-unavailability': {
+        'task': 'appCar.tasks.update_car_unavailability',
+        'schedule': crontab(hour=0, minute=0),  # Run daily at midnight
+    },
     # Add more periodic tasks as needed
 }
