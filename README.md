@@ -6,7 +6,7 @@
 
 #### activate the virtual environment
 // using cmd
-#### env\Scripts\activate.bat   
+#### env\Scripts\activate 
 
 #### (env) pip install -r requirements.txt
 
@@ -17,8 +17,14 @@
 //dummy data
 #### (env) python manage.py generate_dummy_data
 
-//serve the pages
+//open another terminal
+//run again
+#### env\Scripts\activate
+//then#
+#### celery -A DB_project beat -l INFO
 
+//then in the previos terminal
+//serve the pages
 #### (env) python manage.py runserver 9000 // or any other available port
 
 [!note "NB: Do not add (env) to the commands"]
