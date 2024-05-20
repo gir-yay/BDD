@@ -1,3 +1,8 @@
+## Made by:
+### Ghizlane Rahmouni
+### Maryem Risy
+### Salma Zoioui
+
 #### if not installed
 #### pip install virtualenv
 
