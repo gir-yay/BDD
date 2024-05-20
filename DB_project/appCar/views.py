@@ -464,7 +464,7 @@ def facture(request, id):
 #schedule
 def schedule_task(request):
     interval, _ = IntervalSchedule.objects.get_or_create(
-        every=120,
+        every=60,
         period=IntervalSchedule.SECONDS,
     )
 
