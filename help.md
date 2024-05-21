@@ -16,6 +16,8 @@
 
 #### python -m pip install xhtml2pdf pip --upgrade
 #### pip install celery[redis]
+### pip install django-celery-beat
+
 ==> local mongoDB
 ==> create DB called locationv_db
 ==> open cmd in the project folder
