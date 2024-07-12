@@ -1,7 +1,4 @@
-### Made by:
-#### Ghizlane Rahmouni
-#### Maryem Risy
-#### Salma Zoioui
+### Car renting platform
 --------------------------------------------------------------------------
 #### if not installed
 #### pip install virtualenv
